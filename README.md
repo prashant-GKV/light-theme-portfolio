@@ -1,47 +1,59 @@
 # Prashant Saini — Portfolio
 
-Personal portfolio site for **Prashant Saini** — Full Stack Developer, AI Enthusiast, Cloud Learner, and Data Analyst.
+Personal portfolio site of **Prashant Saini** — Full Stack Developer, AI Enthusiast, Cloud Learner, and Data Analyst.
 
-**Live:** https://prashant-portfolio-lac.vercel.app/
+**Live:** [prashant-portfolio-lac.vercel.app](https://prashant-portfolio-lac.vercel.app/)
 
 ## Overview
 
-Single-page portfolio built with React, TypeScript, and Tailwind CSS. Features a colorful animated 3D/aurora background, a custom cursor, an AI chatbot that answers questions about Prashant using a knowledge base, an interactive globe/location map, and project/skills showcases pulled from structured data files.
+Single-page React portfolio built with Vite, TypeScript, and Tailwind CSS. Features an animated aurora background, a rotating globe pinned to the owner's location, a project showcase, a skills breakdown, and an AI chatbot that answers questions about the owner using a built-in knowledge base.
 
-## Sections
+## Features
 
-- **Hero** — name, roles, and intro
-- **Skills** — frontend, backend, languages, and cloud/AI stack with proficiency levels
-- **Projects** — showcased work with live demos and GitHub links (see below)
-- **Internships & Certificates** — IBM SkillsBuild, NPTEL, ShadowFox, CodSoft, GUVI, Udemy
-- **LeetCode stats** — problems solved, rank, badges, top topics
-- **Contact / Location** — email, socials, and an interactive map
-- **ChatBot** — "Prashant AI", answers visitor questions about Prashant's background
-- **Quote banner & "More to Explore"** — closing sections
-
-## Featured Projects
-
-| Project | Description | Stack |
-|---|---|---|
-| [HireReady](https://ai-interviewer-and-resume-analyser.vercel.app/) | AI resume analyzer that scores your resume and conducts a personalized mock interview based on it | Next.js, TypeScript, Claude API, Tailwind CSS |
-| [Online Voting System](https://online-voting-system-for-students.streamlit.app/) | Secure student voting platform with anonymous ballots and live results | Python, Streamlit, Pandas |
-| [Anon](https://anon-teal-alpha.vercel.app/) | Fashion e-commerce storefront with filtering, deals, and cart flow | React, JavaScript, CSS3 |
-| [To-Do List](https://prashant-todo-list.streamlit.app/) | Task manager with categories, priorities, and due dates | Python, Streamlit |
-| [Amazon Frontend Clone](https://prashant-gkv.github.io/amazon-front-end/) | Pixel-accurate clone of Amazon's homepage | HTML5, CSS3, Flexbox |
+- **Hero section** with animated intro and role rotation
+- **Interactive globe / location map** showing the owner's coordinates
+- **Projects showcase** — cards with live demo + GitHub links, tech stack tags, and preview images/GIFs
+- **Skills section** — frontend, backend, languages, and cloud/AI stacks with proficiency levels
+- **AI ChatBot** — answers visitor questions about the owner (experience, skills, certificates, LeetCode stats) from a local knowledge base
+- **Aurora background** and **custom cursor** for a distinctive visual feel
+- **Page loader**, scroll-reveal animations, and a rotating quote banner
+- **Contact section** with social/professional links (GitHub, LinkedIn, LeetCode, email)
+- Fully responsive across desktop and mobile
 
 ## Tech Stack
 
-- **Framework:** React 18 + TypeScript, built with Vite 6
-- **Styling:** Tailwind CSS 4
-- **UI Components:** Radix UI primitives, MUI, shadcn-style component set
-- **Animation:** Motion (Framer Motion)
-- **Other:** React Router, Recharts, React DnD, React Hook Form, Embla Carousel
+| Category | Technologies |
+|---|---|
+| Framework | React 18, TypeScript, Vite |
+| Styling | Tailwind CSS v4, Emotion |
+| UI Components | Radix UI, MUI, shadcn-style primitives |
+| Animation | Motion (Framer Motion), tw-animate-css, canvas-confetti |
+| Data / Charts | Recharts |
+| Routing | React Router |
+| Other | react-hook-form, embla-carousel, react-icons, lucide-react |
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── App.tsx              # Root layout — composes all sections
+│   ├── components/          # Hero, NavBar, Projects, Skills, ChatBot, Globe, etc.
+│   └── data/
+│       ├── portfolio.ts     # Identity, internships, certificates, skills, chatbot knowledge
+│       └── projects.ts      # Project cards (name, description, tech, links, images)
+├── imports/                 # Figma-exported assets/snippets
+├── styles/                  # Global styles
+└── main.tsx                 # Entry point
+public/
+└── projects/                # Project screenshots/GIFs
+```
 
 ## Getting Started
 
 ```bash
 # install dependencies
-npm i
+npm install
 
 # start dev server
 npm run dev
@@ -50,12 +62,15 @@ npm run dev
 npm run build
 ```
 
+The dev server runs on Vite's default port (falls back to the next free port if `5173` is taken).
+
 ## Deployment
 
-Deployed on [Vercel](https://vercel.com). Build command: `npm run build`, output directory: `dist`.
+Deployed on **Vercel**: https://prashant-portfolio-lac.vercel.app/
 
-## Links
+## Connect
 
 - GitHub: [prashant-GKV](https://github.com/prashant-GKV)
 - LinkedIn: [prashant-saini-0660aa294](https://linkedin.com/in/prashant-saini-0660aa294)
 - LeetCode: [Prashant_Saini__](https://leetcode.com/u/Prashant_Saini__/)
+- Email: ps0875135@gmail.com
