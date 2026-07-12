@@ -45,7 +45,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <div
           style={{
             position: "relative",
-            aspectRatio: "16 / 10",
+            aspectRatio: project.imageAspect ?? "16 / 10",
             overflow: "hidden",
             background: `linear-gradient(135deg, ${a1}14, ${a2}0D)`,
             borderBottom: "1px solid rgba(18,20,43,0.06)",

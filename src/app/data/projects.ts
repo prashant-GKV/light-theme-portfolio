@@ -8,6 +8,8 @@ export interface Project {
   liveUrl?: string;   // to be filled in later
   /** "contain" shows the full frame un-cropped (used for animated GIFs); default is cover */
   imageFit?: "cover" | "contain";
+  /** CSS aspect-ratio for the media box; match the file's native ratio so contain-fit GIFs fill it edge-to-edge. Default "16 / 10". */
+  imageAspect?: string;
 }
 
 // Images live in /public/projects/. Filenames contain spaces, so the paths
@@ -18,10 +20,12 @@ export const PROJECTS: Project[] = [
     name: "HireReady",
     image: "/projects/hireready.gif",
     imageFit: "contain",
+    imageAspect: "1588 / 814",
     description:
       "An AI-powered platform that analyzes your resume and then takes an interview based on it. Upload your resume — the AI reviews and scores it, highlights weak areas, and then conducts a personalized mock interview built around your resume.",
     tech: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
-    githubUrl: "",
+    githubUrl: "https://github.com/prashant-GKV/ai-interviewer-and-resume-analyser",
+    liveUrl: "https://ai-interviewer-and-resume-analyser.vercel.app/",
   },
   {
     id: "online-voting-system",

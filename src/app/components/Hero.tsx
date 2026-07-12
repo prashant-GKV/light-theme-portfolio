@@ -57,11 +57,48 @@ const NOTE_SCALE = [
   1046.5, 1174.66, 1318.51, 1567.98,
 ];
 
-function playNote(step: number) {
+function getAudioCtx(): AudioContext | null {
   try {
     const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
     if (!audioCtx) audioCtx = new AC();
-    if (audioCtx.state === "suspended") audioCtx.resume();
+    return audioCtx;
+  } catch {
+    return null;
+  }
+}
+
+/* Browsers keep the AudioContext suspended until a real user gesture
+ * (click / key / touch — hover doesn't count). Unlock on the first one. */
+if (typeof window !== "undefined") {
+  const unlock = () => {
+    const ctx = getAudioCtx();
+    if (ctx && ctx.state === "suspended") ctx.resume();
+    window.removeEventListener("pointerdown", unlock);
+    window.removeEventListener("keydown", unlock);
+    window.removeEventListener("touchstart", unlock);
+  };
+  window.addEventListener("pointerdown", unlock);
+  window.addEventListener("keydown", unlock);
+  window.addEventListener("touchstart", unlock);
+}
+
+function playNote(step: number) {
+  try {
+    if (!getAudioCtx()) return;
+    if (audioCtx!.state === "suspended") {
+      // resume() is async — schedule the note once the context is running
+      audioCtx!.resume().then(() => scheduleNote(step)).catch(() => {});
+      return;
+    }
+    scheduleNote(step);
+  } catch {
+    /* audio not available — silently ignore */
+  }
+}
+
+function scheduleNote(step: number) {
+  try {
+    if (!audioCtx || audioCtx.state !== "running") return;
 
     const freq = NOTE_SCALE[step % NOTE_SCALE.length];
     const now  = audioCtx.currentTime;
