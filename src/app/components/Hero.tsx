@@ -119,10 +119,10 @@ function useTilt(el: RefObject<HTMLDivElement | null>, max = 10) {
 const CHIPS = ["Full Stack Dev", "Problem Solver"];
 
 const SOCIALS = [
-  { icon: <Github   size={18}/>, href: portfolioData.identity.github,   label: "GitHub",   color: "#E2E8F0" },
+  { icon: <Github   size={18}/>, href: portfolioData.identity.github,   label: "GitHub",   color: "#24292F" },
   { icon: <Linkedin size={18}/>, href: portfolioData.identity.linkedin, label: "LinkedIn", color: "#0A66C2" },
-  { icon: <Code2    size={18}/>, href: portfolioData.identity.leetcode, label: "LeetCode", color: "#FFA116" },
-  { icon: <Mail     size={18}/>, href: `mailto:${portfolioData.identity.email}`, label: "Email", color: "#06B6D4" },
+  { icon: <Code2    size={18}/>, href: portfolioData.identity.leetcode, label: "LeetCode", color: "#D97706" },
+  { icon: <Mail     size={18}/>, href: `mailto:${portfolioData.identity.email}`, label: "Email", color: "#0E7490" },
 ];
 
 /* ── Gradient highlight helper ───────────────────────────────────────── */
@@ -142,7 +142,7 @@ function H({ children, g }: { children: ReactNode; g: string }) {
 
 // Unified accent — every highlighted keyword uses the site's signature
 // cyan→purple gradient for a clean, cohesive, professional look.
-const ACCENT = "linear-gradient(135deg, #06B6D4, #6D28D9)";
+const ACCENT = "linear-gradient(135deg, #0E7490, #6D28D9)";
 const G = {
   cyanPurple:  ACCENT,
   emeraldCyan: ACCENT,
@@ -166,7 +166,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
     fontFamily: "'Inter', sans-serif",
     fontSize:    16,
     lineHeight:  1.8,
-    color:       "#CBD5E1",
+    color:       "#3E4258",
     margin:       0,
   };
 
@@ -186,7 +186,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
       {/* Radial glow */}
       <div style={{
         position: "absolute", inset: 0, pointerEvents: "none",
-        background: "radial-gradient(ellipse 60% 50% at 30% 50%, rgba(109,40,217,0.12) 0%, transparent 70%)",
+        background: "radial-gradient(ellipse 60% 50% at 30% 50%, rgba(124,58,237,0.06) 0%, transparent 70%)",
       }} />
 
       {/* ── Two-column main area ── */}
@@ -225,7 +225,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 position:     "absolute",
                 inset:        -3,
                 borderRadius: "50%",
-                background:   "conic-gradient(from 0deg, #06B6D4, #6D28D9, #10B981, #E040FB, #06B6D4)",
+                background:   "conic-gradient(from 0deg, #0E7490, #6D28D9, #047857, #DB2777, #0E7490)",
                 animation:    "borderSpin 4s linear infinite",
               }} />
               <div style={{
@@ -233,8 +233,8 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 width:           210, height: 210,
                 borderRadius:    "50%",
                 overflow:        "hidden",
-                backgroundColor: "#081229",
-                border:          "4px solid #081229",
+                backgroundColor: "#FFFFFF",
+                border:          "4px solid #FFFFFF",
                 animation:       "pulse-glow 3s ease-in-out infinite",
               }}>
                 <img
@@ -263,10 +263,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               letterSpacing: "0.04em",
               lineHeight:     1.1,
               textAlign:     "center",
-              background:    "linear-gradient(135deg, #06B6D4 0%, #6D28D9 50%, #10B981 100%)",
-              WebkitBackgroundClip:"text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip:"text",
+              color:         "#4C1D95",
               cursor:        "default",
               margin:         0,
             }}
@@ -286,7 +283,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               fontFamily:   "'Space Grotesk', sans-serif",
               fontSize:       12,
               fontWeight:     500,
-              color:         "rgba(6,182,212,0.7)",
+              color:         "#0E7490",
               letterSpacing: "0.04em",
               margin:         0,
             }}
@@ -311,9 +308,9 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 textTransform: "uppercase",
                 padding:       "4px 12px",
                 borderRadius:   100,
-                border:        "1px solid rgba(6,182,212,0.3)",
-                background:    "rgba(6,182,212,0.06)",
-                color:         "#06B6D4",
+                border:        "1px solid rgba(14,116,144,0.28)",
+                background:    "rgba(14,116,144,0.07)",
+                color:         "#0E7490",
                 whiteSpace:    "nowrap",
               }}>
                 {chip}
@@ -341,23 +338,23 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                   display:        "flex",
                   alignItems:     "center",
                   justifyContent: "center",
-                  color:          "#8892B0",
-                  border:         "1px solid rgba(255,255,255,0.08)",
-                  background:     "rgba(255,255,255,0.04)",
-                  backdropFilter: "blur(8px)",
+                  color:          s.color,
+                  border:         `1px solid ${s.color}30`,
+                  background:     `linear-gradient(140deg, #FFFFFF 30%, ${s.color}12 100%)`,
+                  boxShadow:      "0 1px 2px rgba(18,20,43,0.04)",
                   transition:     "all 0.2s ease",
                   textDecoration: "none",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color       = s.color;
-                  e.currentTarget.style.borderColor = `${s.color}55`;
-                  e.currentTarget.style.boxShadow   = `0 0 16px ${s.color}30`;
+                  e.currentTarget.style.borderColor = `${s.color}66`;
+                  e.currentTarget.style.boxShadow   = `0 6px 18px ${s.color}30`;
                   e.currentTarget.style.transform   = "translateY(-3px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color       = "#8892B0";
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                  e.currentTarget.style.boxShadow   = "none";
+                  e.currentTarget.style.color       = s.color;
+                  e.currentTarget.style.borderColor = `${s.color}30`;
+                  e.currentTarget.style.boxShadow   = "0 1px 2px rgba(18,20,43,0.04)";
                   e.currentTarget.style.transform   = "translateY(0)";
                 }}
               >
@@ -369,6 +366,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
 
         {/* ────────────── RIGHT COLUMN (60%) ────────────── */}
         <motion.div
+          id="about"
           className="hero-right"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
@@ -386,7 +384,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               fontWeight:     500,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color:         "#FFFFFF",
+              color:         "#12142B",
               margin:         0,
             }}
           >
@@ -410,7 +408,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               whiteSpace:    "nowrap",
             }}>
               <span style={{
-                background:          "linear-gradient(90deg, #06B6D4, #6D28D9, #E040FB, #06B6D4)",
+                background:          "linear-gradient(90deg, #0E7490, #6D28D9, #DB2777, #0E7490)",
                 backgroundSize:      "300% 100%",
                 WebkitBackgroundClip:"text",
                 WebkitTextFillColor: "transparent",
@@ -422,7 +420,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               </span>
               {/* Blinking cursor */}
               <span style={{
-                color:      "#06B6D4",
+                color:      "#6D28D9",
                 fontWeight:  300,
                 animation:  "cursor-blink 0.6s step-end infinite",
                 marginLeft:  3,
@@ -490,7 +488,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               <span
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                 style={{
-                  color:         "#06B6D4",
+                  color:         "#0E7490",
                   fontWeight:     700,
                   cursor:         "pointer",
                   textDecoration: "none",
@@ -499,8 +497,8 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                   textDecorationColor: "transparent",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.textDecorationColor = "#06B6D4";
-                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 16px rgba(6,182,212,0.6)";
+                  (e.currentTarget as HTMLElement).style.textDecorationColor = "#0E7490";
+                  (e.currentTarget as HTMLElement).style.textShadow = "0 0 16px rgba(14,116,144,0.35)";
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLElement).style.textDecorationColor = "transparent";
@@ -528,13 +526,13 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 gap:             10,
                 padding:        "11px 16px",
                 borderRadius:   12,
-                border:         "1px solid rgba(255,255,255,0.08)",
-                background:     "rgba(255,255,255,0.04)",
-                backdropFilter: "blur(12px)",
+                border:         "1px solid rgba(18,20,43,0.10)",
+                background:     "#FFFFFF",
+                boxShadow:      "0 1px 2px rgba(18,20,43,0.04), 0 4px 12px rgba(18,20,43,0.05)",
                 transition:     "border-color 0.2s",
               }}
-              onFocusCapture={(e) => (e.currentTarget.style.borderColor = "rgba(6,182,212,0.4)")}
-              onBlurCapture={(e)  => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)")}
+              onFocusCapture={(e) => (e.currentTarget.style.borderColor = "rgba(109,40,217,0.45)")}
+              onBlurCapture={(e)  => (e.currentTarget.style.borderColor = "rgba(18,20,43,0.10)")}
             >
               <input
                 placeholder="Ask me anything about Prashant…"
@@ -552,7 +550,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               <button
                 onClick={() => onChatOpen()}
                 style={{
-                  background:   "linear-gradient(135deg, #06B6D4, #6D28D9)",
+                  background:   "linear-gradient(135deg, #0E7490, #6D28D9)",
                   border:       "none",
                   borderRadius:  8,
                   padding:      "5px 12px",
@@ -585,19 +583,19 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 letterSpacing: "0.06em", textTransform: "uppercase",
                 padding:       "12px 28px", borderRadius: 12,
                 border:        "none",
-                background:    "linear-gradient(135deg, #06B6D4, #6D28D9)",
+                background:    "linear-gradient(135deg, #0E7490, #6D28D9)",
                 color:         "#fff", cursor: "pointer",
                 display:       "flex", alignItems: "center", gap: 8,
-                boxShadow:     "0 4px 20px rgba(6,182,212,0.3)",
+                boxShadow:     "0 4px 18px rgba(109,40,217,0.22)",
                 transition:    "transform 0.18s ease, box-shadow 0.18s ease",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                e.currentTarget.style.boxShadow = "0 8px 28px rgba(6,182,212,0.45)";
+                e.currentTarget.style.boxShadow = "0 10px 30px rgba(109,40,217,0.30)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "none";
-                e.currentTarget.style.boxShadow = "0 4px 20px rgba(6,182,212,0.3)";
+                e.currentTarget.style.boxShadow = "0 4px 18px rgba(109,40,217,0.22)";
               }}
             >
               View My Work <ArrowRight size={15} />
@@ -613,9 +611,9 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 fontSize:       14, fontWeight: 600,
                 letterSpacing: "0.06em", textTransform: "uppercase",
                 padding:       "12px 24px", borderRadius: 12,
-                border:        "1px solid rgba(255,255,255,0.12)",
-                background:    "rgba(255,255,255,0.05)",
-                backdropFilter:"blur(12px)",
+                border:        "1px solid rgba(18,20,43,0.12)",
+                background:    "#FFFFFF",
+                boxShadow:     "0 1px 2px rgba(18,20,43,0.04)",
                 color:         "var(--text-primary)",
                 cursor:        "pointer",
                 display:       "flex", alignItems: "center", gap: 8,
@@ -623,12 +621,12 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 transition:    "border-color 0.2s, box-shadow 0.2s",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(6,182,212,0.45)";
-                e.currentTarget.style.boxShadow   = "0 0 20px rgba(6,182,212,0.15)";
+                e.currentTarget.style.borderColor = "rgba(109,40,217,0.45)";
+                e.currentTarget.style.boxShadow   = "0 6px 20px rgba(109,40,217,0.14)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
-                e.currentTarget.style.boxShadow   = "none";
+                e.currentTarget.style.borderColor = "rgba(18,20,43,0.12)";
+                e.currentTarget.style.boxShadow   = "0 1px 2px rgba(18,20,43,0.04)";
               }}
             >
               <Eye size={15} /> View Resume
@@ -640,7 +638,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               style={{
                 fontFamily:    "'Space Grotesk', sans-serif",
                 fontSize:       14, fontWeight: 600,
-                color:         "#06B6D4",
+                color:         "#0E7490",
                 background:    "none", border: "none",
                 cursor:        "pointer",
                 display:       "flex", alignItems: "center", gap: 6,
@@ -661,7 +659,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.3 }}
-        style={{ padding: "20px 0", borderTop: "1px solid rgba(255,255,255,0.06)", overflow: "hidden" }}
+        style={{ padding: "20px 0", borderTop: "1px solid rgba(18,20,43,0.07)", overflow: "hidden" }}
       >
         <div style={{
           display: "flex", justifyContent: "space-between",
@@ -680,7 +678,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                     fontFamily:    "'Syne', sans-serif",
                     fontSize:       "clamp(16px, 3vw, 40px)",
                     fontWeight:     800,
-                    color:          isSpace ? "transparent" : "rgba(255,255,255,0.07)",
+                    color:          isSpace ? "transparent" : "rgba(18,20,43,0.10)",
                     letterSpacing: "0.04em",
                     userSelect:    "none",
                     transition:    "color 0.2s, text-shadow 0.2s, transform 0.15s",
@@ -689,12 +687,12 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                   onMouseEnter={(e) => {
                     if (isSpace) return;
                     playNote(step);
-                    e.currentTarget.style.color      = "#06B6D4";
-                    e.currentTarget.style.textShadow = "0 0 20px rgba(6,182,212,0.5)";
+                    e.currentTarget.style.color      = "#6D28D9";
+                    e.currentTarget.style.textShadow = "0 0 20px rgba(109,40,217,0.30)";
                     e.currentTarget.style.transform  = "translateY(-4px)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color      = isSpace ? "transparent" : "rgba(255,255,255,0.07)";
+                    e.currentTarget.style.color      = isSpace ? "transparent" : "rgba(18,20,43,0.10)";
                     e.currentTarget.style.textShadow = "none";
                     e.currentTarget.style.transform  = "translateY(0)";
                   }}
@@ -717,7 +715,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
           padding:       "12px 0 24px",
           fontFamily:   "'Space Grotesk', sans-serif",
           fontSize:       12, fontWeight: 500,
-          color:         "#8892B0",
+          color:         "#676D8A",
           letterSpacing: "0.1em",
           textTransform: "uppercase",
         }}

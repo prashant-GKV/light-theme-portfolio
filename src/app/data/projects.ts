@@ -6,6 +6,8 @@ export interface Project {
   tech: string[];
   githubUrl?: string; // to be filled in later
   liveUrl?: string;   // to be filled in later
+  /** "contain" shows the full frame un-cropped (used for animated GIFs); default is cover */
+  imageFit?: "cover" | "contain";
 }
 
 // Images live in /public/projects/. Filenames contain spaces, so the paths
@@ -13,10 +15,11 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: "ai-resume-analyzer",
-    name: "AI Resume Analyzer",
-    image: encodeURI("/projects/AI Resume Analyzer.png"),
+    name: "HireReady",
+    image: "/projects/hireready.gif",
+    imageFit: "contain",
     description:
-      "An AI-powered resume analyzer that scores resumes against ATS systems, highlights weak bullet points, suggests missing keywords, and generates an improved version tailored to the target role.",
+      "An AI-powered platform that analyzes your resume and then takes an interview based on it. Upload your resume — the AI reviews and scores it, highlights weak areas, and then conducts a personalized mock interview built around your resume.",
     tech: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
     githubUrl: "",
   },

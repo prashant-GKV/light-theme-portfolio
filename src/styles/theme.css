@@ -2,35 +2,35 @@
 
 :root {
   --font-size: 16px;
-  --background: #0C0C10;
-  --foreground: #E2E8F0;
-  --card: #13131A;
-  --card-foreground: #E2E8F0;
-  --popover: #13131A;
-  --popover-foreground: #E2E8F0;
-  --primary: #7B61FF;
+  --background: #F6F7FB;
+  --foreground: #12142B;
+  --card: #FFFFFF;
+  --card-foreground: #12142B;
+  --popover: #FFFFFF;
+  --popover-foreground: #12142B;
+  --primary: #6D28D9;
   --primary-foreground: #ffffff;
-  --secondary: #1E1E2E;
-  --secondary-foreground: #E2E8F0;
-  --muted: #1E1E2E;
-  --muted-foreground: #64748B;
-  --accent: #00D4FF;
-  --accent-foreground: #0C0C10;
+  --secondary: #EEF0F8;
+  --secondary-foreground: #12142B;
+  --muted: #EEF0F8;
+  --muted-foreground: #676D8A;
+  --accent: #0E7490;
+  --accent-foreground: #ffffff;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: #1E1E2E;
-  --input: #13131A;
-  --input-background: #13131A;
-  --switch-background: #1E1E2E;
+  --border: rgba(18, 20, 43, 0.10);
+  --input: #FFFFFF;
+  --input-background: #FFFFFF;
+  --switch-background: #D8DCEA;
   /* Portfolio custom tokens */
-  --p-bg: #0C0C10;
-  --p-card: #13131A;
-  --p-border: #1E1E2E;
-  --p-violet: #7B61FF;
-  --p-cyan: #00D4FF;
-  --p-text: #E2E8F0;
-  --p-muted: #64748B;
-  --p-glow: rgba(123, 97, 255, 0.15);
+  --p-bg: #F6F7FB;
+  --p-card: #FFFFFF;
+  --p-border: rgba(18, 20, 43, 0.10);
+  --p-violet: #6D28D9;
+  --p-cyan: #0E7490;
+  --p-text: #12142B;
+  --p-muted: #676D8A;
+  --p-glow: rgba(109, 40, 217, 0.12);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: oklch(0.708 0 0);
@@ -136,8 +136,8 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
-    background-color: #0C0C10;
-    color: #E2E8F0;
+    background-color: #F6F7FB;
+    color: #12142B;
   }
 
   /**

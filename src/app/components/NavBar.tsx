@@ -55,10 +55,11 @@ export function NavBar() {
           justifyContent:  "space-between",
           padding:         "0 clamp(20px, 4vw, 48px)",
           height:          64,
-          backgroundColor: scrolled ? "rgba(8,18,41,0.80)" : "transparent",
-          backdropFilter:  scrolled ? "blur(20px) saturate(180%)" : "none",
-          borderBottom:    scrolled ? "1px solid rgba(6,182,212,0.12)" : "none",
-          transition:      "background-color 0.4s, backdrop-filter 0.4s, border-color 0.4s",
+          backgroundColor: scrolled ? "rgba(255,255,255,0.78)" : "transparent",
+          backdropFilter:  scrolled ? "blur(20px) saturate(160%)" : "none",
+          borderBottom:    scrolled ? "1px solid rgba(18,20,43,0.07)" : "none",
+          boxShadow:       scrolled ? "0 1px 2px rgba(18,20,43,0.03), 0 8px 24px rgba(18,20,43,0.05)" : "none",
+          transition:      "background-color 0.4s, backdrop-filter 0.4s, border-color 0.4s, box-shadow 0.4s",
         }}
       >
         {/* Logo + avatar */}
@@ -74,12 +75,12 @@ export function NavBar() {
               height:        38,
               borderRadius: "50%",
               padding:       2,
-              background:   "linear-gradient(135deg, #06B6D4, #6D28D9)",
+              background:   "linear-gradient(135deg, #0E7490, #6D28D9)",
               transition:   "box-shadow 0.25s ease, transform 0.2s ease",
               flexShrink:    0,
             }}
             onMouseEnter={(e) => {
-              (e.currentTarget as HTMLElement).style.boxShadow  = "0 0 16px rgba(6,182,212,0.6)";
+              (e.currentTarget as HTMLElement).style.boxShadow  = "0 4px 16px rgba(109,40,217,0.30)";
               (e.currentTarget as HTMLElement).style.transform  = "scale(1.1)";
             }}
             onMouseLeave={(e) => {
@@ -96,7 +97,7 @@ export function NavBar() {
                 borderRadius: "50%",
                 objectFit:    "cover",
                 display:      "block",
-                border:       "2px solid #081229",
+                border:       "2px solid #FFFFFF",
               }}
             />
           </div>
@@ -108,12 +109,12 @@ export function NavBar() {
             letterSpacing: "-0.04em",
           }}>
             <span style={{
-              background:          "linear-gradient(135deg, #06B6D4, #6D28D9)",
+              background:          "linear-gradient(135deg, #0E7490, #6D28D9)",
               WebkitBackgroundClip:"text",
               WebkitTextFillColor: "transparent",
               backgroundClip:      "text",
             }}>P</span>
-            <span style={{ color: "#F0F4FF" }}>S</span>
+            <span style={{ color: "#12142B" }}>S</span>
           </span>
         </button>
 
@@ -135,16 +136,16 @@ export function NavBar() {
                   fontFamily:    "'Space Grotesk', sans-serif",
                   fontSize:       14,
                   fontWeight:     isActive ? 600 : 500,
-                  color:          isActive ? "#F0F4FF" : "#8892B0",
+                  color:          isActive ? "#12142B" : "#676D8A",
                   letterSpacing: "0.01em",
                   transition:    "color 0.2s, background 0.2s",
                 }}
                 onMouseEnter={(e) => {
-                  if (!isActive) e.currentTarget.style.color = "#06B6D4";
-                  e.currentTarget.style.background = "rgba(6,182,212,0.08)";
+                  if (!isActive) e.currentTarget.style.color = "#6D28D9";
+                  e.currentTarget.style.background = "rgba(109,40,217,0.07)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isActive ? "#F0F4FF" : "#8892B0";
+                  e.currentTarget.style.color = isActive ? "#12142B" : "#676D8A";
                   e.currentTarget.style.background = "transparent";
                 }}
               >
@@ -158,8 +159,8 @@ export function NavBar() {
                     width:            4,
                     height:           4,
                     borderRadius:     "50%",
-                    backgroundColor:  "#06B6D4",
-                    boxShadow:        "0 0 8px #06B6D4",
+                    backgroundColor:  "#6D28D9",
+                    boxShadow:        "0 0 8px rgba(109,40,217,0.5)",
                   }} />
                 )}
               </button>
@@ -170,7 +171,7 @@ export function NavBar() {
             onClick={() => scrollTo("#contact")}
             style={{
               marginLeft:    8,
-              background:    "linear-gradient(135deg, #06B6D4, #6D28D9)",
+              background:    "linear-gradient(135deg, #0E7490, #6D28D9)",
               border:        "none",
               borderRadius:  10,
               padding:       "7px 18px",
@@ -180,18 +181,18 @@ export function NavBar() {
               letterSpacing: "0.03em",
               color:          "#fff",
               cursor:         "pointer",
-              boxShadow:      "0 2px 14px rgba(6,182,212,0.3)",
+              boxShadow:      "0 2px 12px rgba(109,40,217,0.22)",
               transition:     "opacity 0.2s, transform 0.18s, box-shadow 0.18s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.opacity   = "0.88";
+              e.currentTarget.style.opacity   = "0.92";
               e.currentTarget.style.transform = "translateY(-1px)";
-              e.currentTarget.style.boxShadow = "0 6px 22px rgba(6,182,212,0.45)";
+              e.currentTarget.style.boxShadow = "0 8px 24px rgba(109,40,217,0.30)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.opacity   = "1";
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 2px 14px rgba(6,182,212,0.3)";
+              e.currentTarget.style.boxShadow = "0 2px 12px rgba(109,40,217,0.22)";
             }}
           >
             Hire me
@@ -203,13 +204,12 @@ export function NavBar() {
           className="flex md:hidden"
           onClick={() => setMenuOpen((o) => !o)}
           style={{
-            background:   "none",
-            border:       "1px solid rgba(6,182,212,0.25)",
+            background:   "rgba(255,255,255,0.7)",
+            border:       "1px solid rgba(18,20,43,0.10)",
             borderRadius:  8,
             padding:       "6px 8px",
-            color:         "#F0F4FF",
+            color:         "#12142B",
             cursor:        "pointer",
-            display:       "flex",
             alignItems:    "center",
           }}
         >
@@ -228,7 +228,7 @@ export function NavBar() {
               position:        "fixed",
               inset:           0,
               zIndex:          90,
-              backgroundColor: "rgba(8,18,41,0.97)",
+              backgroundColor: "rgba(246,247,251,0.97)",
               backdropFilter:  "blur(20px)",
               display:         "flex",
               flexDirection:   "column",
@@ -251,7 +251,7 @@ export function NavBar() {
                   fontFamily:    "'Syne', sans-serif",
                   fontSize:       28,
                   fontWeight:     800,
-                  color:          active === link.href ? "#06B6D4" : "#F0F4FF",
+                  color:          active === link.href ? "#6D28D9" : "#12142B",
                   letterSpacing: "-0.02em",
                   padding:       "8px 20px",
                 }}

@@ -1,87 +1,85 @@
-import { useRef } from "react";
 import { motion } from "motion/react";
 import { Github, ExternalLink } from "lucide-react";
 import { PROJECTS, type Project } from "../data/projects";
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
+/* Per-card accent pairs pulled from the site palette — cycled by position
+   so the grid reads as one coordinated, colour-coded family. */
+const CARD_ACCENTS: [string, string][] = [
+  ["#6D28D9", "#8B5CF6"], // violet
+  ["#0E7490", "#22B8D4"], // teal
+  ["#DB2777", "#F472B6"], // pink
+  ["#B45309", "#F59E0B"], // amber
+  ["#047857", "#34D399"], // emerald
+];
 
-  const handleMouseEnter = () => {
-    const c = cardRef.current;
-    if (!c) return;
-    c.style.borderColor = "rgba(6,182,212,0.4)";
-    c.style.boxShadow = "0 12px 40px rgba(6,182,212,0.12)";
-    c.style.transform = "translateY(-6px)";
-  };
-  const handleMouseLeave = () => {
-    const c = cardRef.current;
-    if (!c) return;
-    c.style.borderColor = "rgba(255,255,255,0.08)";
-    c.style.boxShadow = "none";
-    c.style.transform = "translateY(0)";
-  };
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [a1, a2] = CARD_ACCENTS[index % CARD_ACCENTS.length];
 
   const hasLinks = Boolean(project.githubUrl || project.liveUrl);
 
   return (
     <motion.div
+      className="project-card-wrap"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ delay: index * 0.08, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div
-        ref={cardRef}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
         className="project-card"
         style={{
-          background: "rgba(255,255,255,0.03)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.08)",
+          /* Accent pair feeds every colour on the card via CSS vars —
+             swap CARD_ACCENTS entries to re-theme. */
+          ["--a1" as string]: a1,
+          ["--a2" as string]: a2,
           borderRadius: 20,
           overflow: "hidden",
-          transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease",
           display: "flex",
           flexDirection: "column",
           height: "100%",
         }}
       >
+        {/* Accent top bar */}
+        <div style={{ height: 3, flexShrink: 0, background: `linear-gradient(90deg, ${a1}, ${a2})` }} />
         {/* Screenshot */}
         <div
           style={{
             position: "relative",
             aspectRatio: "16 / 10",
             overflow: "hidden",
-            background: "linear-gradient(135deg, rgba(109,40,217,0.25), rgba(6,182,212,0.18))",
+            background: `linear-gradient(135deg, ${a1}14, ${a2}0D)`,
+            borderBottom: "1px solid rgba(18,20,43,0.06)",
           }}
         >
           <img
             src={project.image}
             alt={project.name}
             loading="lazy"
-            className="project-shot"
+            className={project.imageFit === "contain" ? "project-shot project-shot-contain" : "project-shot"}
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover",
-              objectPosition: "top",
+              objectFit: project.imageFit ?? "cover",
+              objectPosition: project.imageFit === "contain" ? "center" : "top",
               display: "block",
               transition: "transform 0.5s ease",
             }}
           />
-          {/* Bottom fade */}
-          <div
-            style={{
-              position: "absolute",
-              insetInline: 0,
-              bottom: 0,
-              height: 90,
-              background: "linear-gradient(to top, rgba(4,9,20,0.6), transparent)",
-              pointerEvents: "none",
-            }}
-          />
+          {/* Bottom fade — skipped for contain-fit media so nothing covers the frame */}
+          {project.imageFit !== "contain" && (
+            <div
+              style={{
+                position: "absolute",
+                insetInline: 0,
+                bottom: 0,
+                height: 90,
+                background: "linear-gradient(to top, rgba(255,255,255,0.55), transparent)",
+                pointerEvents: "none",
+              }}
+            />
+          )}
+          {/* Accent colour veil — fades in on hover */}
+          <div className="project-shot-veil" style={{ position: "absolute", inset: 0, pointerEvents: "none" }} />
         </div>
 
         {/* Content */}
@@ -91,7 +89,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               fontFamily: "'Syne', sans-serif",
               fontSize: 20,
               fontWeight: 700,
-              color: "#F0F4FF",
+              color: "#12142B",
               letterSpacing: "-0.01em",
               marginBottom: 8,
             }}
@@ -102,7 +100,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 13.5,
-              color: "#8892B0",
+              color: "#3E4258",
               lineHeight: 1.65,
               marginBottom: 16,
             }}
@@ -120,9 +118,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                   fontSize: 11,
                   padding: "4px 11px",
                   borderRadius: 100,
-                  background: "rgba(255,255,255,0.05)",
-                  color: "rgba(226,232,240,0.75)",
-                  border: "1px solid rgba(255,255,255,0.10)",
+                  background: `${a1}0D`,
+                  color: "#3E4258",
+                  border: `1px solid ${a1}1F`,
                   whiteSpace: "nowrap",
                 }}
               >
@@ -140,7 +138,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 gap: 16,
                 marginTop: 16,
                 paddingTop: 14,
-                borderTop: "1px solid rgba(255,255,255,0.06)",
+                borderTop: "1px solid rgba(18,20,43,0.07)",
               }}
             >
               {project.liveUrl && (
@@ -158,11 +156,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     fontWeight: 600,
                     padding: "8px 16px",
                     borderRadius: 10,
-                    background: "linear-gradient(135deg, #06B6D4, #6D28D9)",
                     color: "#fff",
                     textDecoration: "none",
-                    boxShadow: "0 3px 14px rgba(6,182,212,0.25)",
-                    transition: "transform 0.2s ease, box-shadow 0.2s ease",
                   }}
                 >
                   <ExternalLink size={15} /> Live Project
@@ -183,11 +178,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                     fontWeight: 600,
                     padding: "8px 16px",
                     borderRadius: 10,
-                    border: "1px solid rgba(255,255,255,0.14)",
-                    background: "rgba(255,255,255,0.04)",
-                    color: "#E2E8F0",
+                    color: "#12142B",
                     textDecoration: "none",
-                    transition: "border-color 0.2s ease, color 0.2s ease",
                   }}
                 >
                   <Github size={15} /> Code
@@ -226,7 +218,7 @@ export function Projects() {
             fontFamily: "'Space Grotesk', sans-serif",
             fontSize: 12,
             fontWeight: 600,
-            color: "#06B6D4",
+            color: "#0E7490",
             letterSpacing: "0.14em",
             textTransform: "uppercase",
             marginBottom: 12,
@@ -239,7 +231,7 @@ export function Projects() {
             fontFamily: "'Syne', sans-serif",
             fontSize: "clamp(36px, 4.5vw, 58px)",
             fontWeight: 800,
-            color: "#F0F4FF",
+            color: "#12142B",
             letterSpacing: "-0.03em",
             lineHeight: 1.05,
             marginBottom: 12,
@@ -251,7 +243,7 @@ export function Projects() {
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: 16,
-            color: "#8892B0",
+            color: "#3E4258",
             maxWidth: 560,
             lineHeight: 1.6,
           }}
@@ -273,16 +265,62 @@ export function Projects() {
         ))}
       </div>
 
-      {/* Scoped hover styles */}
+      {/* Scoped card styles — all colour flows from each card's --a1/--a2 accent pair */}
       <style>{`
+        .project-card {
+          background: linear-gradient(150deg, #FFFFFF 55%, color-mix(in srgb, var(--a1) 5%, transparent) 100%);
+          border: 1px solid color-mix(in srgb, var(--a1) 14%, transparent);
+          box-shadow: 0 1px 2px rgba(18,20,43,0.04), 0 4px 12px rgba(18,20,43,0.05),
+                      inset 0 1px 0 rgba(255,255,255,0.9);
+          transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .project-card:hover {
+          transform: translateY(-6px);
+          border-color: color-mix(in srgb, var(--a1) 38%, transparent);
+          box-shadow: 0 4px 12px rgba(18,20,43,0.05),
+                      0 24px 56px color-mix(in srgb, var(--a1) 18%, transparent),
+                      inset 0 1px 0 rgba(255,255,255,0.9);
+        }
         .project-card:hover .project-shot { transform: scale(1.05); }
+        /* contain-fit media (GIFs) must stay fully visible — no zoom crop on hover */
+        .project-card:hover .project-shot-contain { transform: none; }
+        .project-shot-veil {
+          background: linear-gradient(160deg, color-mix(in srgb, var(--a1) 13%, transparent) 0%, transparent 55%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .project-card:hover .project-shot-veil { opacity: 1; }
+        .project-live-btn {
+          background: linear-gradient(135deg, var(--a1), var(--a2));
+          box-shadow: 0 3px 12px color-mix(in srgb, var(--a1) 24%, transparent);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
         .project-live-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(6,182,212,0.4);
+          box-shadow: 0 8px 22px color-mix(in srgb, var(--a1) 32%, transparent);
+        }
+        .project-code-btn {
+          border: 1px solid color-mix(in srgb, var(--a1) 24%, transparent);
+          background: #FFFFFF;
+          transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
         }
         .project-code-btn:hover {
-          border-color: rgba(6,182,212,0.45) !important;
-          color: #06B6D4 !important;
+          border-color: color-mix(in srgb, var(--a1) 50%, transparent);
+          background: color-mix(in srgb, var(--a1) 5%, #FFFFFF);
+          color: var(--a1);
+        }
+        .project-live-btn:focus-visible, .project-code-btn:focus-visible {
+          outline: 2px solid var(--a1);
+          outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .project-card, .project-shot, .project-live-btn { transition: none; }
+          .project-card:hover { transform: none; }
+          .project-card:hover .project-shot { transform: none; }
+        }
+        /* Bento rhythm: feature the lead project on wide screens */
+        @media (min-width: 940px) {
+          .project-card-wrap:first-child { grid-column: span 2; }
         }
       `}</style>
     </section>

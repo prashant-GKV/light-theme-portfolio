@@ -13,19 +13,19 @@ const SKILLS = [
   { Icon: SiPython,      color: "#3776AB", label: "Python"     },
   { Icon: SiTypescript,  color: "#3178C6", label: "TypeScript" },
   { Icon: SiJavascript,  color: "#F7DF1E", label: "JavaScript" },
-  { Icon: SiNextdotjs,   color: "#ffffff", label: "Next.js"    },
+  { Icon: SiNextdotjs,   color: "#000000", label: "Next.js"    },
   { Icon: SiMongodb,     color: "#47A248", label: "MongoDB"    },
   { Icon: SiPostgresql,  color: "#4169E1", label: "PostgreSQL" },
   { Icon: SiMysql,       color: "#4479A1", label: "MySQL"      },
   { Icon: SiDocker,      color: "#2496ED", label: "Docker"     },
   { Icon: SiKubernetes,  color: "#326CE5", label: "Kubernetes" },
   { Icon: SiGit,         color: "#F05032", label: "Git"        },
-  { Icon: SiGithub,      color: "#E2E8F0", label: "GitHub"     },
+  { Icon: SiGithub,      color: "#24292F", label: "GitHub"     },
   { Icon: SiTailwindcss, color: "#06B6D4", label: "Tailwind"   },
   { Icon: SiGraphql,     color: "#E10098", label: "GraphQL"    },
   { Icon: SiCplusplus,   color: "#00599C", label: "C++"        },
   { Icon: SiCss,         color: "#2965F1", label: "CSS3"       },
-  { Icon: SiExpress,     color: "#999",    label: "Express"    },
+  { Icon: SiExpress,     color: "#4B5563", label: "Express"    },
   { Icon: SiPandas,      color: "#4DABCF", label: "Pandas"     },
   { Icon: SiNumpy,       color: "#4DABCF", label: "NumPy"      },
 ];
@@ -54,8 +54,8 @@ const R_RATIO   = 188 / BASE;
 const ICON_RATIO = 68 / BASE;
 const ICONI_RATIO = 32 / BASE;
 
-const MERIDIAN_STEP  = 12;   // 30 meridians
-const PARALLEL_STEP  = 7.5;  // 23 parallels
+const MERIDIAN_STEP  = 7.5;  // 48 meridians — same 7.5° step both axes for a symmetric lattice
+const PARALLEL_STEP  = 7.5;  // 23 parallels, mirrored about the equator (-82.5° … +82.5°)
 
 /* ── Starfield (unit coords 0..1, scaled by size at draw time) ────────── */
 const STARS = Array.from({ length: 110 }, () => ({
@@ -84,30 +84,30 @@ function drawScene(ctx: CanvasRenderingContext2D, rotY: number, size: number) {
   const SIZE = size, CX = size / 2, CY = size / 2, R = size * R_RATIO;
   ctx.clearRect(0, 0, SIZE, SIZE);
 
-  /* Stars */
+  /* Ambient specks — faint violet dust replaces the dark-theme starfield */
   STARS.forEach(({ x: ux, y: uy, r, a }) => {
     const x = ux * SIZE, y = uy * SIZE;
     ctx.beginPath();
     ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255,255,255,${a})`;
+    ctx.fillStyle = `rgba(109,40,217,${(a * 0.22).toFixed(3)})`;
     ctx.fill();
   });
 
-  /* Atmosphere glow — aurora palette */
+  /* Atmosphere halo — soft brand tint on the light canvas */
   const atm = ctx.createRadialGradient(CX, CY, R * 0.82, CX, CY, R * 1.38);
-  atm.addColorStop(0,   "rgba(109,40,217,0.22)");
-  atm.addColorStop(0.5, "rgba(6,182,212,0.10)");
-  atm.addColorStop(1,   "rgba(6,182,212,0)");
+  atm.addColorStop(0,   "rgba(109,40,217,0.10)");
+  atm.addColorStop(0.5, "rgba(14,116,144,0.05)");
+  atm.addColorStop(1,   "rgba(14,116,144,0)");
   ctx.beginPath();
   ctx.arc(CX, CY, R * 1.38, 0, Math.PI * 2);
   ctx.fillStyle = atm;
   ctx.fill();
 
-  /* Sphere body */
+  /* Sphere body — paper-white blueprint globe */
   const body = ctx.createRadialGradient(CX - 46, CY - 46, 10, CX, CY, R);
-  body.addColorStop(0,    "#1a2060");
-  body.addColorStop(0.45, "#0d1540");
-  body.addColorStop(1,    "#06091e");
+  body.addColorStop(0,    "#FFFFFF");
+  body.addColorStop(0.45, "#F3F5FC");
+  body.addColorStop(1,    "#E3E7F5");
   ctx.beginPath();
   ctx.arc(CX, CY, R, 0, Math.PI * 2);
   ctx.fillStyle = body;
@@ -119,7 +119,7 @@ function drawScene(ctx: CanvasRenderingContext2D, rotY: number, size: number) {
   ctx.arc(CX, CY, R - 0.5, 0, Math.PI * 2);
   ctx.clip();
 
-  ctx.strokeStyle = "rgba(6,182,212,0.22)";   // cyan grid — aurora palette
+  ctx.strokeStyle = "rgba(14,116,144,0.18)";  // teal blueprint grid — denser lattice, lighter stroke
   ctx.lineWidth   = 0.6;
 
   /* Parallels */
@@ -153,7 +153,7 @@ function drawScene(ctx: CanvasRenderingContext2D, rotY: number, size: number) {
 
   /* Specular */
   const shine = ctx.createRadialGradient(CX - 54, CY - 52, 5, CX - 30, CY - 30, 86);
-  shine.addColorStop(0, "rgba(255,255,255,0.12)");
+  shine.addColorStop(0, "rgba(255,255,255,0.65)");
   shine.addColorStop(1, "rgba(255,255,255,0)");
   ctx.beginPath();
   ctx.arc(CX, CY, R, 0, Math.PI * 2);
@@ -163,7 +163,7 @@ function drawScene(ctx: CanvasRenderingContext2D, rotY: number, size: number) {
   /* Border */
   ctx.beginPath();
   ctx.arc(CX, CY, R, 0, Math.PI * 2);
-  ctx.strokeStyle = "rgba(6,182,212,0.45)";
+  ctx.strokeStyle = "rgba(14,116,144,0.35)";
   ctx.lineWidth   = 1.5;
   ctx.stroke();
 }
@@ -268,17 +268,17 @@ export function Globe() {
               : "translateX(-50%) scale(0.8) translateY(-6px)",
           transition:      "opacity 0.18s ease, transform 0.22s ease",
           pointerEvents:   "none",
-          backgroundColor: "rgba(8,18,41,0.92)",
-          border:          "1px solid rgba(6,182,212,0.45)",
+          backgroundColor: "rgba(255,255,255,0.96)",
+          border:          `1px solid ${ic.color}4D`,
           borderRadius:    8,
           padding:         "5px 13px",
           fontFamily:      "'Space Grotesk', sans-serif",
           fontSize:        13,
           fontWeight:      700,
-          color:           "#06B6D4",
+          color:           ic.color,
           whiteSpace:      "nowrap",
           backdropFilter:  "blur(8px)",
-          boxShadow:       "0 4px 20px rgba(0,0,0,0.5), 0 0 12px rgba(6,182,212,0.2)",
+          boxShadow:       `0 8px 24px rgba(18,20,43,0.12), 0 2px 8px ${ic.color}1A`,
           zIndex:          70,
         }}>
           {ic.label}
@@ -296,8 +296,8 @@ export function Globe() {
           justifyContent:  "center",
           transition:      "border-color 0.18s ease, box-shadow 0.2s ease",
           boxShadow:       isHov
-            ? `0 0 28px ${ic.color}60, 0 0 10px ${ic.color}30`
-            : `0 0 6px ${ic.color}15`,
+            ? `0 6px 20px ${ic.color}40, 0 2px 8px ${ic.color}25`
+            : `0 1px 4px ${ic.color}18`,
         }}>
           <ic.Icon size={ICON_I} color={ic.color} />
         </div>

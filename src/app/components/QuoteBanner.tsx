@@ -23,7 +23,7 @@ export function QuoteBanner() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse 45% 55% at 50% 50%, rgba(203,213,225,0.05) 0%, transparent 65%)",
+            "radial-gradient(ellipse 45% 55% at 50% 50%, rgba(124,58,237,0.05) 0%, transparent 65%)",
           pointerEvents: "none",
         }}
       />
@@ -38,7 +38,7 @@ export function QuoteBanner() {
           fontFamily: "'Playfair Display', serif",
           fontSize: "clamp(40px, 5vw, 64px)",
           lineHeight: 0.5,
-          color: "rgba(203,213,225,0.35)",
+          color: "rgba(18,20,43,0.20)",
           marginBottom: 6,
           userSelect: "none",
         }}
@@ -82,10 +82,10 @@ export function QuoteBanner() {
                 duration: 0.6,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              whileHover={{ y: -5, scale: 1.05, color: "#FFFFFF" }}
+              whileHover={{ y: -5, scale: 1.05, color: "#6D28D9" }}
               style={{
                 display: "inline-block",
-                color: "#CBD5E1",
+                color: "#3E4258",
                 cursor: "default",
               }}
             >
@@ -105,7 +105,7 @@ export function QuoteBanner() {
           height: 2,
           borderRadius: 999,
           marginTop: 24,
-          background: "linear-gradient(90deg, transparent, rgba(203,213,225,0.6), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(109,40,217,0.45), transparent)",
         }}
       />
 

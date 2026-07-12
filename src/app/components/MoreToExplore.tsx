@@ -23,15 +23,15 @@ const LEETCODE_URL = "https://leetcode.com/u/Prashant_Saini__/";
 const GITHUB_URL   = "https://github.com/prashant-GKV";
 
 const CERTS = [
-  { id:1, title:"Applied AI Internship",          issuer:"IBM SkillsBuild · CSRBOX · AICTE", date:"Dec 2025–Jan 2026", badge:"6-week internship",   color:"#0062FF", img:certAI      },
-  { id:2, title:"Cloud Computing",                 issuer:"NPTEL · IIT Kharagpur",            date:"Jul–Oct 2024",      badge:"🥇 Elite · 80%",      color:"#FFD700", img:certCloud   },
-  { id:3, title:"Java Programming",                issuer:"CodSoft",                          date:"Jul–Aug 2025",      badge:"4-week internship",   color:"#F89820", img:certCodSoft },
-  { id:4, title:"Front-End Web Development",       issuer:"IBM SkillsBuild · CSRBOX",         date:"Jun–Aug 2024",      badge:"6-week internship",   color:"#0062FF", img:certFEWD    },
-  { id:5, title:"Data Analytics",                  issuer:"IBM SkillsBuild · CSRBOX",         date:"Dec 2024–Jan 2025", badge:"Winter Cert Program", color:"#0062FF", img:certData    },
-  { id:6, title:"Data Science",                    issuer:"ShadowFox",                        date:"Jan 2025",          badge:"1-month internship",  color:"#C0A060", img:certShadow  },
-  { id:7, title:"ChatGPT for Everyone",            issuer:"GUVI · Google for Education",      date:"Oct 2024",          badge:"Course completion",   color:"#34A853", img:certGuvi    },
-  { id:8, title:"HTML & CSS: Beg. to Advanced",   issuer:"Udemy",                            date:"Sep 2024",          badge:"5 hours",             color:"#A435F0", img:certUdemy1  },
-  { id:9, title:"Playing with Binary",             issuer:"Udemy",                            date:"Sep 2024",          badge:"1 hour",              color:"#A435F0", img:certUdemy2  },
+  { id:1, title:"Applied AI Internship",          issuer:"IBM SkillsBuild · CSRBOX · AICTE", date:"Dec 2025–Jan 2026", badge:"6-week internship",   color:"#0053D6", img:certAI      },
+  { id:2, title:"Cloud Computing",                 issuer:"NPTEL · IIT Kharagpur",            date:"Jul–Oct 2024",      badge:"🥇 Elite · 80%",      color:"#B45309", img:certCloud   },
+  { id:3, title:"Java Programming",                issuer:"CodSoft",                          date:"Jul–Aug 2025",      badge:"4-week internship",   color:"#C2410C", img:certCodSoft },
+  { id:4, title:"Front-End Web Development",       issuer:"IBM SkillsBuild · CSRBOX",         date:"Jun–Aug 2024",      badge:"6-week internship",   color:"#0053D6", img:certFEWD    },
+  { id:5, title:"Data Analytics",                  issuer:"IBM SkillsBuild · CSRBOX",         date:"Dec 2024–Jan 2025", badge:"Winter Cert Program", color:"#0053D6", img:certData    },
+  { id:6, title:"Data Science",                    issuer:"ShadowFox",                        date:"Jan 2025",          badge:"1-month internship",  color:"#8A6D3B", img:certShadow  },
+  { id:7, title:"ChatGPT for Everyone",            issuer:"GUVI · Google for Education",      date:"Oct 2024",          badge:"Course completion",   color:"#15803D", img:certGuvi    },
+  { id:8, title:"HTML & CSS: Beg. to Advanced",   issuer:"Udemy",                            date:"Sep 2024",          badge:"5 hours",             color:"#7E22CE", img:certUdemy1  },
+  { id:9, title:"Playing with Binary",             issuer:"Udemy",                            date:"Sep 2024",          badge:"1 hour",              color:"#7E22CE", img:certUdemy2  },
 ];
 
 
@@ -57,7 +57,7 @@ function Skeleton({ w = "100%", h = 16 }: { w?: string | number; h?: number }) {
   return (
     <div style={{
       width: w, height: h, borderRadius: 6,
-      background: "linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.05) 100%)",
+      background: "linear-gradient(90deg, rgba(18,20,43,0.05) 0%, rgba(18,20,43,0.09) 50%, rgba(18,20,43,0.05) 100%)",
       backgroundSize: "200% 100%",
       animation: "shimmer-sk 1.5s infinite",
     }} />
@@ -139,7 +139,7 @@ function Ring({ count, total, color, label, displayText, active }: {
   return (
     <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:6 }}>
       <svg viewBox="0 0 36 36" width={75} height={75}>
-        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="3" />
+        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(18,20,43,0.08)" strokeWidth="3" />
         <circle cx="18" cy="18" r="14" fill="none"
           stroke={color} strokeWidth="3"
           strokeDasharray={`${arc.toFixed(1)} ${(100 - arc).toFixed(1)}`}
@@ -148,10 +148,10 @@ function Ring({ count, total, color, label, displayText, active }: {
         />
       </svg>
       <div style={{ textAlign:"center" }}>
-        <div style={{ fontFamily:"'Syne',sans-serif", fontSize:13, fontWeight:800, color:"white", lineHeight:1 }}>
+        <div style={{ fontFamily:"'Syne',sans-serif", fontSize:13, fontWeight:800, color:"#12142B", lineHeight:1 }}>
           {active ? displayText : "…"}
         </div>
-        <div style={{ fontSize:"0.6rem", color:"rgba(255,255,255,0.45)", fontFamily:"'Space Grotesk',sans-serif", letterSpacing:"0.04em", marginTop:2 }}>
+        <div style={{ fontSize:"0.6rem", color:"#676D8A", fontFamily:"'Space Grotesk',sans-serif", letterSpacing:"0.04em", marginTop:2 }}>
           {label}
         </div>
       </div>
@@ -164,31 +164,31 @@ function CertLightbox({ cert, onClose, onPrev, onNext }: { cert: typeof CERTS[0]
   return (
     <motion.div
       initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
-      style={{ position:"fixed", inset:0, backgroundColor:"rgba(0,0,0,0.92)", backdropFilter:"blur(12px)", zIndex:300, display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}
+      style={{ position:"fixed", inset:0, backgroundColor:"rgba(18,20,43,0.55)", backdropFilter:"blur(12px)", zIndex:300, display:"flex", alignItems:"center", justifyContent:"center", padding:24 }}
       onClick={onClose}
     >
       <motion.div
         initial={{ scale:0.88, y:24 }} animate={{ scale:1, y:0 }} exit={{ scale:0.88, y:24 }}
         transition={{ ease:[0.16,1,0.3,1], duration:0.35 }}
         onClick={(e) => e.stopPropagation()}
-        style={{ background:"rgba(8,18,41,0.95)", border:`1px solid ${cert.color}40`, borderRadius:20, overflow:"hidden", maxWidth:800, width:"100%", maxHeight:"90vh", display:"flex", flexDirection:"column", boxShadow:`0 0 60px ${cert.color}15` }}
+        style={{ background:"#FFFFFF", border:`1px solid ${cert.color}40`, borderRadius:20, overflow:"hidden", maxWidth:800, width:"100%", maxHeight:"90vh", display:"flex", flexDirection:"column", boxShadow:"0 4px 12px rgba(18,20,43,0.06), 0 24px 64px rgba(18,20,43,0.14)" }}
       >
-        <div style={{ padding:"16px 20px", borderBottom:"1px solid rgba(255,255,255,0.07)", display:"flex", justifyContent:"space-between", alignItems:"center", flexShrink:0 }}>
+        <div style={{ padding:"16px 20px", borderBottom:"1px solid rgba(18,20,43,0.08)", display:"flex", justifyContent:"space-between", alignItems:"center", flexShrink:0 }}>
           <div>
             <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:10, color:cert.color, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:4 }}>{cert.badge}</p>
-            <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:16, fontWeight:700, color:"#F0F4FF" }}>{cert.title}</h3>
-            <p style={{ fontFamily:"'Inter',sans-serif", fontSize:12, color:"#8892B0", marginTop:2 }}>{cert.issuer} · {cert.date}</p>
+            <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:16, fontWeight:700, color:"#12142B" }}>{cert.title}</h3>
+            <p style={{ fontFamily:"'Inter',sans-serif", fontSize:12, color:"#676D8A", marginTop:2 }}>{cert.issuer} · {cert.date}</p>
           </div>
-          <button onClick={onClose} style={{ background:"none", border:"none", color:"#8892B0", cursor:"pointer", padding:4 }}><X size={20}/></button>
+          <button onClick={onClose} style={{ background:"none", border:"none", color:"#676D8A", cursor:"pointer", padding:4 }}><X size={20}/></button>
         </div>
-        <div style={{ flex:1, overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center", backgroundColor:"#04090f", padding:"10px 16px" }}>
+        <div style={{ flex:1, overflow:"hidden", display:"flex", alignItems:"center", justifyContent:"center", backgroundColor:"#F1F3FA", padding:"10px 16px" }}>
           <ImageWithFallback src={cert.img} alt={cert.title}
             style={{ maxWidth:"100%", maxHeight:"calc(90vh - 168px)", width:"auto", height:"auto", objectFit:"contain", display:"block", borderRadius:4 }}
           />
         </div>
-        <div style={{ padding:"12px 20px", borderTop:"1px solid rgba(255,255,255,0.07)", display:"flex", justifyContent:"space-between", alignItems:"center", flexShrink:0 }}>
+        <div style={{ padding:"12px 20px", borderTop:"1px solid rgba(18,20,43,0.08)", display:"flex", justifyContent:"space-between", alignItems:"center", flexShrink:0 }}>
           <button onClick={onPrev} className="nav-btn">‹ Prev</button>
-          <span style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11, color:"#8892B0" }}>{CERTS.findIndex(c=>c.id===cert.id)+1} / {CERTS.length}</span>
+          <span style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11, color:"#676D8A" }}>{CERTS.findIndex(c=>c.id===cert.id)+1} / {CERTS.length}</span>
           <button onClick={onNext} className="nav-btn">Next ›</button>
         </div>
       </motion.div>
@@ -208,19 +208,19 @@ function CertCard({ onOpen }: { onOpen: () => void }) {
 
   return (
     <div className="dd-card card-certificate" onClick={onOpen} style={{ cursor:"pointer" }}>
-      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#06B6D4,#6D28D9,#06B6D4)" }} />
-      <div style={{ fontSize:40, marginBottom:12, filter:"drop-shadow(0 0 16px rgba(245,158,11,0.5))" }}>🏆</div>
-      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#F0F4FF", marginBottom:16 }}>Certificate Vault</h3>
+      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#0E7490,#6D28D9,#0E7490)" }} />
+      <div style={{ fontSize:40, marginBottom:12, filter:"drop-shadow(0 4px 12px rgba(180,83,9,0.25))" }}>🏆</div>
+      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#12142B", marginBottom:16 }}>Certificate Vault</h3>
 
       {/* Highlight stat row — mirrors the GitHub card's stat grid */}
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:10, marginBottom:16 }}>
         {CERT_HIGHLIGHTS.map(s => (
           <div key={s.label} style={{
-            background:"rgba(245,158,11,0.06)", borderRadius:10, padding:"12px 8px",
-            textAlign:"center", border:"1px solid rgba(245,158,11,0.18)",
+            background:"rgba(180,83,9,0.06)", borderRadius:10, padding:"12px 8px",
+            textAlign:"center", border:"1px solid rgba(180,83,9,0.18)",
           }}>
-            <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"1.5rem", fontWeight:800, color:"#FCD34D", lineHeight:1 }}>{s.value}</div>
-            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.6rem", color:"#8892B0", letterSpacing:"0.05em", marginTop:5 }}>{s.label}</div>
+            <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"1.5rem", fontWeight:800, color:"#B45309", lineHeight:1 }}>{s.value}</div>
+            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.6rem", color:"#676D8A", letterSpacing:"0.05em", marginTop:5 }}>{s.label}</div>
           </div>
         ))}
       </div>
@@ -231,7 +231,7 @@ function CertCard({ onOpen }: { onOpen: () => void }) {
           <div key={c.id} style={{
             flex:1, aspectRatio:"4 / 3", borderRadius:7, overflow:"hidden",
             border:`1px solid ${c.color}35`, position:"relative",
-            background:"rgba(255,255,255,0.03)",
+            background:"#F1F3FA",
           }}>
             <ImageWithFallback
               src={c.img} alt={c.title}
@@ -240,8 +240,8 @@ function CertCard({ onOpen }: { onOpen: () => void }) {
             {i === preview.length - 1 && (
               <div style={{
                 position:"absolute", inset:0, display:"flex", alignItems:"center", justifyContent:"center",
-                background:"rgba(8,18,41,0.72)", fontFamily:"'Syne',sans-serif",
-                fontSize:13, fontWeight:800, color:"#FCD34D",
+                background:"rgba(255,255,255,0.80)", fontFamily:"'Syne',sans-serif",
+                fontSize:13, fontWeight:800, color:"#B45309",
               }}>
                 +{CERTS.length - preview.length + 1}
               </div>
@@ -251,8 +251,8 @@ function CertCard({ onOpen }: { onOpen: () => void }) {
       </div>
 
       <div style={{ display:"flex", alignItems:"center", gap:6, marginBottom:18 }}>
-        <CheckCircle size={13} color="#F59E0B" />
-        <span style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11.5, color:"#8892B0", letterSpacing:"0.03em" }}>
+        <CheckCircle size={13} color="#B45309" />
+        <span style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11.5, color:"#676D8A", letterSpacing:"0.03em" }}>
           IBM · NPTEL · ShadowFox · CodSoft · GUVI · Udemy
         </span>
       </div>
@@ -332,9 +332,9 @@ function LeetCodeCard({ onOpen }: { onOpen: () => void }) {
       ref={ref}
       className={`dd-card card-leetcode${justUpdated ? " just-updated" : ""}`}
     >
-      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#F97316,#FB923C,#F97316)" }} />
+      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#EA580C,#F97316,#EA580C)" }} />
       <div style={{ fontSize:40, marginBottom:12 }}>⚔️</div>
-      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#F0F4FF", marginBottom:16 }}>LeetCode Arena</h3>
+      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#12142B", marginBottom:16 }}>LeetCode Arena</h3>
 
       {loading || !d ? (
         <div style={{ display:"flex", flexDirection:"column", gap:10, marginBottom:20 }}>
@@ -346,21 +346,21 @@ function LeetCodeCard({ onOpen }: { onOpen: () => void }) {
           <div style={{ marginBottom:16 }}>
             <div style={{
               fontFamily:"'Syne',sans-serif", fontSize:"3rem", fontWeight:800, lineHeight:1,
-              background:"linear-gradient(135deg,#F97316,#FB923C,#FBBF24)",
+              background:"linear-gradient(135deg,#C2410C,#EA580C,#B45309)",
               WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
             }}>
               {getSmartDisplay(d.total)}
             </div>
-            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11, color:"rgba(255,255,255,0.45)", letterSpacing:"0.06em", marginTop:4 }}>
+            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:11, color:"#676D8A", letterSpacing:"0.06em", marginTop:4 }}>
               problems solved
             </div>
           </div>
 
           {/* Difficulty rings */}
           <div style={{ display:"flex", gap:12, justifyContent:"center", marginBottom:16 }}>
-            <Ring count={d.easy}   total={d.total} color="#10B981" label="Easy"   displayText={getSmartDisplay(d.easy)}   active={active} />
-            <Ring count={d.medium} total={d.total} color="#F59E0B" label="Medium" displayText={getSmartDisplay(d.medium)} active={active} />
-            <Ring count={d.hard}   total={d.total} color="#EF4444" label="Hard"   displayText={getSmartDisplay(d.hard)}   active={active} />
+            <Ring count={d.easy}   total={d.total} color="#047857" label="Easy"   displayText={getSmartDisplay(d.easy)}   active={active} />
+            <Ring count={d.medium} total={d.total} color="#B45309" label="Medium" displayText={getSmartDisplay(d.medium)} active={active} />
+            <Ring count={d.hard}   total={d.total} color="#DC2626" label="Hard"   displayText={getSmartDisplay(d.hard)}   active={active} />
           </div>
 
           {/* Stat pills */}
@@ -387,7 +387,7 @@ function LeetCodeCard({ onOpen }: { onOpen: () => void }) {
 
       {/* Live / cache badge */}
       {!loading && (
-        <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"rgba(255,255,255,0.28)", marginTop:12, textAlign:"right" }}>
+        <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"rgba(18,20,43,0.40)", marginTop:12, textAlign:"right" }}>
           {liveBadge}
         </div>
       )}
@@ -401,7 +401,7 @@ interface GHData { repos:number; followers:number; stars:number; topLangs:string
 
 const GH_FALLBACK: GHData = { repos:13, followers:0, stars:0, topLangs:["Java","Python","JavaScript"] };
 
-const LANG_COLORS: Record<string,string> = { Java:"#F89820", Python:"#3776AB", JavaScript:"#F7DF1E", TypeScript:"#3178C6", "C++":"#00599C", HTML:"#E34F26", CSS:"#2965F1" };
+const LANG_COLORS: Record<string,string> = { Java:"#C2410C", Python:"#3776AB", JavaScript:"#A16207", TypeScript:"#3178C6", "C++":"#00599C", HTML:"#C93A16", CSS:"#2965F1" };
 
 function GitHubCard({ onOpen }: { onOpen: () => void }) {
   const [data,    setData]    = useState<GHData | null>(null);
@@ -440,9 +440,9 @@ function GitHubCard({ onOpen }: { onOpen: () => void }) {
 
   return (
     <div ref={ref} className="dd-card card-github" style={{ display:"flex", flexDirection:"column" }}>
-      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#06B6D4,#6D28D9,#06B6D4)" }} />
+      <div className="card-top-line" style={{ background:"linear-gradient(90deg,#0E7490,#6D28D9,#0E7490)" }} />
       <div style={{ fontSize:40, marginBottom:12 }}>⌨️</div>
-      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#F0F4FF", marginBottom:20 }}>GitHub Stats</h3>
+      <h3 style={{ fontFamily:"'Syne',sans-serif", fontSize:18, fontWeight:700, color:"#12142B", marginBottom:20 }}>GitHub Stats</h3>
 
       {loading ? (
         <div style={{ display:"flex", flexDirection:"column", gap:10, marginBottom:20 }}>
@@ -457,16 +457,16 @@ function GitHubCard({ onOpen }: { onOpen: () => void }) {
               { label:"Stars",     value:`⭐ ${stars}`        },
               { label:"Followers", value:followers.toString() },
             ].map(s => (
-              <div key={s.label} style={{ background:"rgba(255,255,255,0.04)", borderRadius:10, padding:"14px 8px", textAlign:"center", border:"1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"1.35rem", fontWeight:800, color:"#F0F4FF", lineHeight:1.1 }}>{s.value}</div>
-                <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#8892B0", letterSpacing:"0.06em", marginTop:5 }}>{s.label}</div>
+              <div key={s.label} style={{ background:"rgba(14,116,144,0.06)", borderRadius:10, padding:"14px 8px", textAlign:"center", border:"1px solid rgba(14,116,144,0.16)" }}>
+                <div style={{ fontFamily:"'Syne',sans-serif", fontSize:"1.35rem", fontWeight:800, color:"#12142B", lineHeight:1.1 }}>{s.value}</div>
+                <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#676D8A", letterSpacing:"0.06em", marginTop:5 }}>{s.label}</div>
               </div>
             ))}
           </div>
 
           {/* Top languages */}
           <div>
-            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#8892B0", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:8 }}>
+            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#676D8A", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:8 }}>
               Top Languages
             </div>
             <div style={{ display:"flex", flexWrap:"wrap", gap:7 }}>
@@ -474,9 +474,9 @@ function GitHubCard({ onOpen }: { onOpen: () => void }) {
                 <span key={l} style={{
                   display:"inline-block", padding:"5px 13px", borderRadius:20,
                   fontSize:"0.72rem", fontFamily:"'Space Grotesk',sans-serif",
-                  background:`${LANG_COLORS[l] ?? "#7B61FF"}18`,
-                  border:`1px solid ${LANG_COLORS[l] ?? "#7B61FF"}40`,
-                  color: LANG_COLORS[l] ?? "#7B61FF",
+                  background:`${LANG_COLORS[l] ?? "#6D28D9"}14`,
+                  border:`1px solid ${LANG_COLORS[l] ?? "#6D28D9"}38`,
+                  color: LANG_COLORS[l] ?? "#6D28D9",
                 }}>{l}</span>
               ))}
             </div>
@@ -484,11 +484,11 @@ function GitHubCard({ onOpen }: { onOpen: () => void }) {
 
           {/* Contribution chart — grows to fill remaining space */}
           <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center", minHeight:0 }}>
-            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#8892B0", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>
+            <div style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"0.62rem", color:"#676D8A", letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:10 }}>
               Contribution Graph
             </div>
             <img
-              src={`https://ghchart.rshah.org/06B6D4/${GITHUB_USER}`}
+              src={`https://ghchart.rshah.org/0E7490/${GITHUB_USER}`}
               alt="GitHub contribution graph"
               style={{ width:"100%", borderRadius:8, opacity:0.9 }}
               onError={(e) => ((e.target as HTMLImageElement).style.display="none")}
@@ -515,18 +515,18 @@ function ModalWrapper({ children, title, onClose }: { children:ReactNode; title:
   return (
     <motion.div
       initial={{ opacity:0 }} animate={{ opacity:1 }} exit={{ opacity:0 }}
-      style={{ position:"fixed", inset:0, backgroundColor:"rgba(8,18,41,0.9)", backdropFilter:"blur(12px)", zIndex:200, display:"flex", alignItems:"center", justifyContent:"center", padding:24, overflowY:"auto" }}
+      style={{ position:"fixed", inset:0, backgroundColor:"rgba(18,20,43,0.45)", backdropFilter:"blur(12px)", zIndex:200, display:"flex", alignItems:"center", justifyContent:"center", padding:24, overflowY:"auto" }}
       onClick={onClose}
     >
       <motion.div
         initial={{ scale:0.92, y:20 }} animate={{ scale:1, y:0 }} exit={{ scale:0.92, y:20 }}
         transition={{ ease:[0.16,1,0.3,1], duration:0.3 }}
         onClick={e => e.stopPropagation()}
-        style={{ background:"rgba(13,27,62,0.85)", backdropFilter:"blur(20px)", border:"1px solid rgba(255,255,255,0.08)", borderRadius:24, padding:36, maxWidth:700, width:"100%", maxHeight:"90vh", overflowY:"auto" }}
+        style={{ background:"#FFFFFF", border:"1px solid rgba(18,20,43,0.08)", borderRadius:24, padding:36, maxWidth:700, width:"100%", maxHeight:"90vh", overflowY:"auto", boxShadow:"0 4px 12px rgba(18,20,43,0.06), 0 24px 64px rgba(18,20,43,0.14)" }}
       >
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:24 }}>
-          <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:20, fontWeight:700, color:"#F0F4FF" }}>{title}</h2>
-          <button onClick={onClose} style={{ background:"none", border:"none", color:"#8892B0", cursor:"pointer" }}><X size={20}/></button>
+          <h2 style={{ fontFamily:"'Syne',sans-serif", fontSize:20, fontWeight:700, color:"#12142B" }}>{title}</h2>
+          <button onClick={onClose} style={{ background:"none", border:"none", color:"#676D8A", cursor:"pointer" }}><X size={20}/></button>
         </div>
         {children}
       </motion.div>
@@ -550,15 +550,16 @@ function CertModal({ onClose }: { onClose:()=>void }) {
             key={c.id} whileHover={{ y:-3, scale:1.02 }}
             onClick={()=>setLightboxId(c.id)}
             style={{
-              background:"rgba(255,255,255,0.04)", border:`1px solid ${c.color}30`,
+              background:`linear-gradient(150deg, #FFFFFF 45%, ${c.color}10 100%)`, border:`1px solid ${c.color}30`,
               borderRadius:14, padding:16, cursor:"pointer", position:"relative", overflow:"hidden",
+              boxShadow:"0 1px 2px rgba(18,20,43,0.04)",
             }}
           >
-            <div style={{ position:"absolute", top:0, right:0, width:60, height:60, background:`radial-gradient(circle at top right, ${c.color}15, transparent 70%)` }} />
+            <div style={{ position:"absolute", top:0, right:0, width:60, height:60, background:`radial-gradient(circle at top right, ${c.color}12, transparent 70%)` }} />
             <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:9, color:c.color, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:5 }}>{c.badge}</p>
-            <h4 style={{ fontFamily:"'Syne',sans-serif", fontSize:13, fontWeight:700, color:"#F0F4FF", marginBottom:3, lineHeight:1.3 }}>{c.title}</h4>
-            <p style={{ fontFamily:"'Inter',sans-serif", fontSize:11, color:"#8892B0" }}>{c.issuer}</p>
-            <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:10, color:"#8892B0", marginTop:8 }}>{c.date} · Click to view →</p>
+            <h4 style={{ fontFamily:"'Syne',sans-serif", fontSize:13, fontWeight:700, color:"#12142B", marginBottom:3, lineHeight:1.3 }}>{c.title}</h4>
+            <p style={{ fontFamily:"'Inter',sans-serif", fontSize:11, color:"#676D8A" }}>{c.issuer}</p>
+            <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:10, color:"#676D8A", marginTop:8 }}>{c.date} · Click to view →</p>
           </motion.div>
         ))}
       </div>
@@ -579,8 +580,8 @@ export function MoreToExplore() {
     <section id="more" style={{ position:"relative", zIndex:1, padding:"clamp(60px,8vw,100px) clamp(20px,5vw,8%)", overflow:"hidden" }}>
 
       {/* Local glow accents */}
-      <div style={{ position:"absolute", top:"15%", left:"5%", width:500, height:500, background:"radial-gradient(circle, rgba(109,40,217,0.12) 0%, transparent 70%)", filter:"blur(60px)", pointerEvents:"none" }} />
-      <div style={{ position:"absolute", bottom:"10%", right:"5%", width:400, height:400, background:"radial-gradient(circle, rgba(6,182,212,0.10) 0%, transparent 70%)", filter:"blur(60px)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", top:"15%", left:"5%", width:500, height:500, background:"radial-gradient(circle, rgba(109,40,217,0.05) 0%, transparent 70%)", filter:"blur(60px)", pointerEvents:"none" }} />
+      <div style={{ position:"absolute", bottom:"10%", right:"5%", width:400, height:400, background:"radial-gradient(circle, rgba(14,116,144,0.05) 0%, transparent 70%)", filter:"blur(60px)", pointerEvents:"none" }} />
 
       {/* Heading */}
       <motion.div
@@ -591,8 +592,8 @@ export function MoreToExplore() {
         style={{ marginBottom:48 }}
       >
         <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:12 }}>
-          <div style={{ width:7, height:7, borderRadius:"50%", backgroundColor:"#06B6D4", boxShadow:"0 0 8px #06B6D480", animation:"pulse-dot 2s ease-in-out infinite" }} />
-          <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:12, fontWeight:600, letterSpacing:"0.15em", textTransform:"uppercase", color:"#06B6D4" }}>
+          <div style={{ width:7, height:7, borderRadius:"50%", backgroundColor:"#0E7490", boxShadow:"0 0 8px rgba(14,116,144,0.45)", animation:"pulse-dot 2s ease-in-out infinite" }} />
+          <p style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:12, fontWeight:600, letterSpacing:"0.15em", textTransform:"uppercase", color:"#0E7490" }}>
             More to Explore
           </p>
         </div>
@@ -600,7 +601,7 @@ export function MoreToExplore() {
           fontFamily:"'Syne',sans-serif",
           fontSize:"clamp(36px,4.5vw,58px)",
           fontWeight:800, letterSpacing:"-0.03em", lineHeight:1.05,
-          background:"linear-gradient(135deg,#ffffff,#06B6D4,#6D28D9)",
+          background:"linear-gradient(135deg,#12142B,#0E7490,#6D28D9)",
           WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text",
           textShadow:"none",
         }}>
@@ -629,12 +630,11 @@ export function MoreToExplore() {
       {/* Scoped styles */}
       <style>{`
         .dd-card {
-          background: rgba(255,255,255,0.04);
-          border: 1px solid rgba(255,255,255,0.08);
+          background: #FFFFFF;
+          border: 1px solid rgba(18,20,43,0.08);
           border-radius: 24px;
           padding: 36px 32px;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          box-shadow: 0 1px 2px rgba(18,20,43,0.04), 0 4px 12px rgba(18,20,43,0.05);
           position: relative;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
@@ -643,13 +643,38 @@ export function MoreToExplore() {
         }
         .dd-card:hover {
           transform: translateY(-8px) scale(1.02);
-          border-color: rgba(255,255,255,0.15);
-          box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(6,182,212,0.10);
+          border-color: rgba(109,40,217,0.22);
+          box-shadow: 0 4px 12px rgba(18,20,43,0.05), 0 28px 64px rgba(109,40,217,0.13);
+        }
+        /* Per-card colour identity — soft gradient washes from the site palette */
+        .card-certificate {
+          background: linear-gradient(155deg, #FFFFFF 42%, rgba(180,83,9,0.08) 100%);
+          border-color: rgba(180,83,9,0.22);
+        }
+        .card-certificate:hover {
+          border-color: rgba(180,83,9,0.42);
+          box-shadow: 0 4px 12px rgba(18,20,43,0.05), 0 28px 64px rgba(180,83,9,0.17);
+        }
+        .card-leetcode {
+          background: linear-gradient(155deg, #FFFFFF 42%, rgba(234,88,12,0.08) 100%);
+          border-color: rgba(234,88,12,0.22);
+        }
+        .card-leetcode:hover {
+          border-color: rgba(234,88,12,0.42);
+          box-shadow: 0 4px 12px rgba(18,20,43,0.05), 0 28px 64px rgba(234,88,12,0.16);
+        }
+        .card-github {
+          background: linear-gradient(155deg, #FFFFFF 40%, rgba(14,116,144,0.07) 82%, rgba(109,40,217,0.06) 100%);
+          border-color: rgba(14,116,144,0.22);
+        }
+        .card-github:hover {
+          border-color: rgba(14,116,144,0.42);
+          box-shadow: 0 4px 12px rgba(18,20,43,0.05), 0 28px 64px rgba(14,116,144,0.16);
         }
         .card-top-line {
           position: absolute;
           top: 0; left: 0; right: 0;
-          height: 2px;
+          height: 3px;
           border-radius: 24px 24px 0 0;
         }
         .explore-btn {
@@ -668,24 +693,24 @@ export function MoreToExplore() {
           text-decoration: none;
         }
         .explore-btn:hover { gap: 10px; }
-        .explore-gold   { background: rgba(245,158,11,0.10); border: 1px solid rgba(245,158,11,0.30); color: #F59E0B; }
-        .explore-gold:hover   { background: rgba(245,158,11,0.20); box-shadow: 0 0 20px rgba(245,158,11,0.20); }
-        .explore-orange { background: rgba(249,115,22,0.10); border: 1px solid rgba(249,115,22,0.30); color: #FB923C; }
-        .explore-orange:hover { background: rgba(249,115,22,0.20); box-shadow: 0 0 20px rgba(249,115,22,0.20); }
-        .explore-cyan   { background: rgba(6,182,212,0.10);  border: 1px solid rgba(6,182,212,0.30);  color: #06B6D4; }
-        .explore-cyan:hover   { background: rgba(6,182,212,0.20);  box-shadow: 0 0 20px rgba(6,182,212,0.20); }
+        .explore-gold   { background: rgba(180,83,9,0.08);  border: 1px solid rgba(180,83,9,0.28);  color: #B45309; }
+        .explore-gold:hover   { background: rgba(180,83,9,0.14);  box-shadow: 0 6px 18px rgba(180,83,9,0.16); }
+        .explore-orange { background: rgba(194,65,12,0.08); border: 1px solid rgba(194,65,12,0.28); color: #C2410C; }
+        .explore-orange:hover { background: rgba(194,65,12,0.14); box-shadow: 0 6px 18px rgba(194,65,12,0.16); }
+        .explore-cyan   { background: rgba(14,116,144,0.08); border: 1px solid rgba(14,116,144,0.28); color: #0E7490; }
+        .explore-cyan:hover   { background: rgba(14,116,144,0.14); box-shadow: 0 6px 18px rgba(14,116,144,0.16); }
         .nav-btn {
-          background: none;
-          border: 1px solid rgba(255,255,255,0.10);
+          background: #FFFFFF;
+          border: 1px solid rgba(18,20,43,0.12);
           border-radius: 8px;
-          color: #8892B0;
+          color: #676D8A;
           padding: 6px 14px;
           cursor: pointer;
           font-family: 'Space Grotesk', sans-serif;
           font-size: 13px;
           transition: color 0.2s, border-color 0.2s;
         }
-        .nav-btn:hover { color: #F0F4FF; border-color: rgba(6,182,212,0.4); }
+        .nav-btn:hover { color: #12142B; border-color: rgba(109,40,217,0.40); }
         @keyframes shimmer-sk {
           0%   { background-position: -200% 0; }
           100% { background-position:  200% 0; }
@@ -699,15 +724,15 @@ export function MoreToExplore() {
           font-size: 0.7rem;
           font-weight: 600;
           font-family: 'Space Grotesk', sans-serif;
-          background: rgba(249,115,22,0.08);
-          border: 1px solid rgba(249,115,22,0.20);
-          color: #FB923C;
+          background: rgba(194,65,12,0.07);
+          border: 1px solid rgba(194,65,12,0.22);
+          color: #C2410C;
           margin: 3px 2px;
         }
         @keyframes update-pulse {
-          0%   { box-shadow: 0 0 0 0   rgba(249,115,22,0.4); }
-          50%  { box-shadow: 0 0 0 12px rgba(249,115,22,0.1); }
-          100% { box-shadow: 0 0 0 0   rgba(249,115,22,0); }
+          0%   { box-shadow: 0 0 0 0   rgba(234,88,12,0.35); }
+          50%  { box-shadow: 0 0 0 12px rgba(234,88,12,0.08); }
+          100% { box-shadow: 0 0 0 0   rgba(234,88,12,0); }
         }
         .card-leetcode.just-updated {
           animation: update-pulse 1s ease-out;

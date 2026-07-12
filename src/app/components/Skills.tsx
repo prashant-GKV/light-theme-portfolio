@@ -14,14 +14,14 @@ type SkillEntry = { name: string; Icon: ElementType; color: string };
 const skillCategories: { label: string; accent: string; skills: SkillEntry[] }[] = [
   {
     label: "Frontend",
-    accent: "#06B6D4",
+    accent: "#0E7490",
     skills: [
       { name: "HTML5",      Icon: SiHtml5,       color: "#E34F26" },
-      { name: "CSS3",       Icon: SiCss,         color: "#2965F1" },
-      { name: "JavaScript", Icon: SiJavascript,  color: "#F7DF1E" },
-      { name: "React",      Icon: SiReact,       color: "#61DAFB" },
-      { name: "Next.js",    Icon: SiNextdotjs,   color: "#ffffff" },
-      { name: "Tailwind",   Icon: SiTailwindcss, color: "#06B6D4" },
+      { name: "CSS",        Icon: SiCss,         color: "#2965F1" },
+      { name: "JavaScript", Icon: SiJavascript,  color: "#E0B800" },
+      { name: "React",      Icon: SiReact,       color: "#149ECA" },
+      { name: "Next.js",    Icon: SiNextdotjs,   color: "#000000" },
+      { name: "Tailwind",   Icon: SiTailwindcss, color: "#0E7490" },
     ],
   },
   {
@@ -29,14 +29,14 @@ const skillCategories: { label: string; accent: string; skills: SkillEntry[] }[]
     accent: "#7C3AED",
     skills: [
       { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
-      { name: "Express", Icon: SiExpress,   color: "#aaa"    },
+      { name: "Express", Icon: SiExpress,   color: "#4B5563" },
       { name: "MongoDB", Icon: SiMongodb,   color: "#47A248" },
       { name: "MySQL",   Icon: SiMysql,     color: "#4479A1" },
     ],
   },
   {
     label: "Languages",
-    accent: "#EC4899",
+    accent: "#DB2777",
     skills: [
       { name: "Java",       Icon: SiCplusplus,  color: "#F89820" },
       { name: "Python",     Icon: SiPython,     color: "#3776AB" },
@@ -46,14 +46,14 @@ const skillCategories: { label: string; accent: string; skills: SkillEntry[] }[]
   },
   {
     label: "Cloud & Tools",
-    accent: "#10B981",
+    accent: "#047857",
     skills: [
       { name: "Pandas",  Icon: SiPandas,  color: "#150458" },
       { name: "NumPy",   Icon: SiNumpy,   color: "#4DABCF" },
       { name: "Docker",  Icon: SiDocker,  color: "#2496ED" },
       { name: "Git",     Icon: SiGit,     color: "#F05032" },
-      { name: "Vercel",  Icon: SiVercel,  color: "#ffffff" },
-      { name: "Netlify", Icon: SiNetlify, color: "#00C7B7" },
+      { name: "Vercel",  Icon: SiVercel,  color: "#000000" },
+      { name: "Netlify", Icon: SiNetlify, color: "#00A392" },
     ],
   },
 ];
@@ -72,7 +72,7 @@ function JavaBadge() {
   );
 }
 
-function SkillCard({ name, Icon, color, delay, isJava }: SkillEntry & { delay: number; isJava?: boolean }) {
+function SkillCard({ name, Icon, color, accent, delay, isJava }: SkillEntry & { accent: string; delay: number; isJava?: boolean }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.88 }}
@@ -81,16 +81,16 @@ function SkillCard({ name, Icon, color, delay, isJava }: SkillEntry & { delay: n
       transition={{ delay, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.background    = "rgba(255,255,255,0.08)";
-        el.style.borderColor   = "rgba(6,182,212,0.4)";
-        el.style.boxShadow     = "0 0 20px rgba(6,182,212,0.15), 0 0 40px rgba(109,40,217,0.10)";
+        el.style.background    = `linear-gradient(160deg, #FFFFFF 30%, ${accent}17 130%)`;
+        el.style.borderColor   = `${accent}59`;
+        el.style.boxShadow     = `0 8px 22px ${accent}24, 0 2px 8px rgba(18,20,43,0.05)`;
         el.style.transform     = "translateY(-4px) scale(1.03)";
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement;
-        el.style.background    = "rgba(255,255,255,0.04)";
-        el.style.borderColor   = "rgba(255,255,255,0.08)";
-        el.style.boxShadow     = "none";
+        el.style.background    = `linear-gradient(160deg, #FFFFFF 40%, ${accent}0C 130%)`;
+        el.style.borderColor   = `${accent}21`;
+        el.style.boxShadow     = "0 1px 2px rgba(18,20,43,0.04)";
         el.style.transform     = "none";
       }}
       style={{
@@ -102,9 +102,9 @@ function SkillCard({ name, Icon, color, delay, isJava }: SkillEntry & { delay: n
         gap:             8,
         minHeight:       85,
         borderRadius:    14,
-        background:     "rgba(255,255,255,0.04)",
-        backdropFilter: "blur(12px)",
-        border:         "1px solid rgba(255,255,255,0.08)",
+        background:     `linear-gradient(160deg, #FFFFFF 40%, ${accent}0C 130%)`,
+        border:         `1px solid ${accent}21`,
+        boxShadow:      "0 1px 2px rgba(18,20,43,0.04)",
         cursor:         "pointer",
         transition:     "all 0.3s ease",
       }}
@@ -125,7 +125,7 @@ function SkillCard({ name, Icon, color, delay, isJava }: SkillEntry & { delay: n
         fontFamily:    "'Space Grotesk', sans-serif",
         fontSize:      "0.68rem",
         fontWeight:     500,
-        color:         "rgba(255,255,255,0.75)",
+        color:         "#3E4258",
         textAlign:     "center",
         letterSpacing: "0.02em",
         lineHeight:     1.3,
@@ -142,7 +142,7 @@ function GhostCard() {
     <div style={{
       minHeight:    85,
       borderRadius: 14,
-      border:       "1px dashed rgba(255,255,255,0.04)",
+      border:       "1px dashed rgba(18,20,43,0.04)",
       background:   "transparent",
       pointerEvents:"none",
       opacity:       0,
@@ -177,7 +177,7 @@ export function Skills() {
             fontFamily:    "'Space Grotesk', sans-serif",
             fontSize:       12, fontWeight: 600,
             letterSpacing: "0.14em", textTransform: "uppercase",
-            color:         "#06B6D4", marginBottom: 12,
+            color:         "#0E7490", marginBottom: 12,
           }}>
             Skills
           </p>
@@ -188,14 +188,9 @@ export function Skills() {
             letterSpacing: "-0.03em",
             lineHeight:     1.05,
             marginBottom:   0,
+            color:         "#12142B",
           }}>
-            My{" "}
-            <span style={{
-              background:           "linear-gradient(90deg, #ffffff 0%, #6D28D9 50%, #E040FB 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor:  "transparent",
-              backgroundClip:       "text",
-            }}>Skills</span>
+            My Skills
           </h2>
         </motion.div>
       </div>
@@ -221,7 +216,7 @@ export function Skills() {
           fontFamily:    "'Space Grotesk', sans-serif",
           fontSize:       12, fontWeight: 500,
           letterSpacing: "0.06em",
-          color:         "rgba(6,182,212,0.55)",
+          color:         "rgba(14,116,144,0.85)",
           textAlign:     "center",
           marginBottom:   0,
         }}
@@ -266,6 +261,7 @@ export function Skills() {
                     <SkillCard
                       key={skill.name}
                       {...skill}
+                      accent={cat.accent}
                       delay={ci * 0.06 + si * 0.04}
                       isJava={skill.name === "Java"}
                     />
@@ -291,15 +287,14 @@ export function Skills() {
           margin: 48px 0 8px;
         }
 
-        /* Glassmorphism wrapper */
+        /* Elevated card wrapper */
         .skills-grid-container {
-          background: rgba(255,255,255,0.02);
-          border: 1px solid rgba(255,255,255,0.07);
+          background: linear-gradient(135deg, #FFFFFF 0%, rgba(14,116,144,0.035) 30%, rgba(124,58,237,0.035) 62%, rgba(219,39,119,0.03) 100%);
+          border: 1px solid rgba(18,20,43,0.08);
           border-radius: 24px;
           padding: 36px 40px;
-          backdrop-filter: blur(10px);
-          box-shadow: 0 8px 32px rgba(0,0,0,0.3),
-                      inset 0 1px 0 rgba(255,255,255,0.05);
+          box-shadow: 0 2px 6px rgba(18,20,43,0.04),
+                      0 12px 32px rgba(18,20,43,0.07);
           margin-top: 48px;
           width: 100%;
           max-width: 1200px;
@@ -322,7 +317,7 @@ export function Skills() {
           gap: 12px;
         }
         .skill-category.has-divider {
-          border-right: 1px solid rgba(255,255,255,0.06);
+          border-right: 1px solid rgba(18,20,43,0.07);
           padding-right: 32px;
         }
 
@@ -370,7 +365,7 @@ export function Skills() {
           }
           /* re-apply divider only for col-1 items (odd) */
           .skill-category:nth-child(odd) {
-            border-right: 1px solid rgba(255,255,255,0.06);
+            border-right: 1px solid rgba(18,20,43,0.07);
             padding-right: 24px;
           }
           .skill-cards-grid {

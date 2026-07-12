@@ -21,15 +21,15 @@ export function CustomCursor() {
       if (ringRef.current) {
         ringRef.current.style.width  = "40px";
         ringRef.current.style.height = "40px";
-        ringRef.current.style.borderColor = "rgba(6,182,212,0.8)";
-        ringRef.current.style.backgroundColor = "rgba(6,182,212,0.05)";
+        ringRef.current.style.borderColor = "rgba(109,40,217,0.75)";
+        ringRef.current.style.backgroundColor = "rgba(109,40,217,0.06)";
       }
     };
     const onLeaveLink = () => {
       if (ringRef.current) {
         ringRef.current.style.width  = "24px";
         ringRef.current.style.height = "24px";
-        ringRef.current.style.borderColor = "rgba(6,182,212,0.45)";
+        ringRef.current.style.borderColor = "rgba(109,40,217,0.45)";
         ringRef.current.style.backgroundColor = "transparent";
       }
     };
@@ -82,10 +82,11 @@ export function CustomCursor() {
           position:        "fixed",
           top:             0,
           left:            0,
+          transform:       "translate(-100px, -100px)",
           width:           24,
           height:          24,
           borderRadius:    "50%",
-          border:          "1.5px solid rgba(6,182,212,0.45)",
+          border:          "1.5px solid rgba(109,40,217,0.45)",
           pointerEvents:   "none",
           zIndex:          9999,
           transition:      "width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease",
@@ -99,10 +100,11 @@ export function CustomCursor() {
           position:      "fixed",
           top:           0,
           left:          0,
+          transform:     "translate(-100px, -100px)",
           width:         8,
           height:        8,
           borderRadius:  "50%",
-          backgroundColor: "#06B6D4",
+          backgroundColor: "#6D28D9",
           pointerEvents: "none",
           zIndex:        9999,
           willChange:    "transform",

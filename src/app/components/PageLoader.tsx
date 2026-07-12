@@ -19,7 +19,7 @@ export function PageLoader() {
             position:        "fixed",
             inset:           0,
             zIndex:          9998,
-            backgroundColor: "#081229",
+            backgroundColor: "#F6F7FB",
             display:         "flex",
             flexDirection:   "column",
             alignItems:      "center",
@@ -36,7 +36,7 @@ export function PageLoader() {
               fontFamily:    "'Syne', sans-serif",
               fontSize:       72,
               fontWeight:     800,
-              background:     "linear-gradient(135deg, #06B6D4, #6D28D9, #10B981)",
+              background:     "linear-gradient(135deg, #0E7490, #6D28D9, #047857)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor:  "transparent",
               backgroundClip: "text",
@@ -52,7 +52,7 @@ export function PageLoader() {
             style={{
               width:           160,
               height:          2,
-              backgroundColor: "rgba(255,255,255,0.08)",
+              backgroundColor: "rgba(18,20,43,0.10)",
               borderRadius:    1,
               overflow:        "hidden",
             }}
@@ -64,7 +64,7 @@ export function PageLoader() {
               style={{
                 width:           "100%",
                 height:          "100%",
-                background:      "linear-gradient(90deg, #06B6D4, #6D28D9)",
+                background:      "linear-gradient(90deg, #0E7490, #6D28D9)",
                 borderRadius:    1,
               }}
             />

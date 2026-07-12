@@ -118,13 +118,13 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
               width: 52,
               height: 52,
               borderRadius: "50%",
-              backgroundColor: "#7B61FF",
+              backgroundColor: "#6D28D9",
               border: "none",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              boxShadow: "0 4px 24px rgba(123,97,255,0.4)",
+              boxShadow: "0 6px 24px rgba(109,40,217,0.30)",
               color: "#fff",
             }}
           >
@@ -148,20 +148,20 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
               zIndex: 150,
               width: 360,
               height: 500,
-              backgroundColor: "#13131A",
-              border: "1px solid #1E1E2E",
+              backgroundColor: "#FFFFFF",
+              border: "1px solid rgba(18,20,43,0.10)",
               borderRadius: 20,
               display: "flex",
               flexDirection: "column",
               overflow: "hidden",
-              boxShadow: "0 24px 80px rgba(0,0,0,0.5)",
+              boxShadow: "0 4px 12px rgba(18,20,43,0.06), 0 24px 64px rgba(18,20,43,0.16)",
             }}
           >
             {/* Header */}
             <div
               style={{
                 padding: "16px 20px",
-                borderBottom: "1px solid #1E1E2E",
+                borderBottom: "1px solid rgba(18,20,43,0.08)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
@@ -173,27 +173,27 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                     width: 36,
                     height: 36,
                     borderRadius: "50%",
-                    backgroundColor: "rgba(123,97,255,0.2)",
+                    backgroundColor: "rgba(109,40,217,0.10)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "#7B61FF",
+                    color: "#6D28D9",
                   }}
                 >
                   <Bot size={18} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 600, color: "#E2E8F0" }}>
+                  <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 14, fontWeight: 600, color: "#12142B" }}>
                     Prashant AI
                   </div>
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#7B61FF" }}>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#047857" }}>
                     ● Online
                   </div>
                 </div>
               </div>
               <button
                 onClick={() => setOpen(false)}
-                style={{ background: "none", border: "none", color: "#64748B", cursor: "pointer" }}
+                style={{ background: "none", border: "none", color: "#676D8A", cursor: "pointer" }}
               >
                 <X size={18} />
               </button>
@@ -225,11 +225,11 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                       maxWidth: "80%",
                       padding: "10px 14px",
                       borderRadius: msg.role === "user" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-                      backgroundColor: msg.role === "user" ? "#7B61FF" : "#0C0C10",
-                      border: msg.role === "assistant" ? "1px solid #1E1E2E" : "none",
+                      backgroundColor: msg.role === "user" ? "#6D28D9" : "#F4F5FA",
+                      border: msg.role === "assistant" ? "1px solid rgba(18,20,43,0.07)" : "none",
                       fontFamily: "'Inter', sans-serif",
                       fontSize: 13,
-                      color: "#E2E8F0",
+                      color: msg.role === "user" ? "#FFFFFF" : "#12142B",
                       lineHeight: 1.6,
                       whiteSpace: "pre-wrap",
                     }}
@@ -244,8 +244,8 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                     style={{
                       padding: "10px 16px",
                       borderRadius: "14px 14px 14px 4px",
-                      backgroundColor: "#0C0C10",
-                      border: "1px solid #1E1E2E",
+                      backgroundColor: "#F4F5FA",
+                      border: "1px solid rgba(18,20,43,0.07)",
                     }}
                   >
                     <div style={{ display: "flex", gap: 4 }}>
@@ -254,7 +254,7 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                           key={i}
                           animate={{ y: [0, -4, 0] }}
                           transition={{ repeat: Infinity, delay: i * 0.15, duration: 0.6 }}
-                          style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: "#7B61FF" }}
+                          style={{ width: 6, height: 6, borderRadius: "50%", backgroundColor: "#6D28D9" }}
                         />
                       ))}
                     </div>
@@ -268,7 +268,7 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
             <div
               style={{
                 padding: "12px 16px",
-                borderTop: "1px solid #1E1E2E",
+                borderTop: "1px solid rgba(18,20,43,0.08)",
                 display: "flex",
                 gap: 8,
                 alignItems: "center",
@@ -281,17 +281,17 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                 placeholder="Ask me anything..."
                 style={{
                   flex: 1,
-                  backgroundColor: "#0C0C10",
-                  border: "1px solid #1E1E2E",
+                  backgroundColor: "#F4F5FA",
+                  border: "1px solid rgba(18,20,43,0.10)",
                   borderRadius: 10,
                   padding: "8px 12px",
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 13,
-                  color: "#E2E8F0",
+                  color: "#12142B",
                   outline: "none",
                 }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "#7B61FF")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "#1E1E2E")}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#6D28D9")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(18,20,43,0.10)")}
               />
               <button
                 onClick={() => handleSend()}
@@ -299,7 +299,7 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
                   width: 36,
                   height: 36,
                   borderRadius: 10,
-                  backgroundColor: "#7B61FF",
+                  backgroundColor: "#6D28D9",
                   border: "none",
                   cursor: "pointer",
                   display: "flex",

@@ -24,10 +24,10 @@ export function LocationMap() {
       >
         <div
           style={{
-            backgroundColor: "rgba(255,255,255,0.04)",
-            backdropFilter: "blur(16px)",
-            border: "1px solid rgba(6,182,212,0.12)",
+            background: "linear-gradient(120deg, #FFFFFF 45%, rgba(34,184,212,0.07) 82%, rgba(139,92,246,0.06) 100%)",
+            border: "1px solid rgba(14,116,144,0.18)",
             borderRadius: 24,
+            boxShadow: "0 2px 6px rgba(18,20,43,0.04), 0 12px 32px rgba(14,116,144,0.09)",
             overflow: "hidden",
             position: "relative",
             minHeight: 360,
@@ -58,8 +58,8 @@ export function LocationMap() {
                       cx={x}
                       cy={y}
                       r={1.4}
-                      fill="#2A3550"
-                      opacity={0.5}
+                      fill="#B9C0D9"
+                      opacity={0.55}
                     />
                   );
                 })
@@ -67,10 +67,10 @@ export function LocationMap() {
 
               {/* faint latitude / longitude lines */}
               {[90, 180, 270].map((y) => (
-                <line key={`h${y}`} x1="0" y1={y} x2="1200" y2={y} stroke="#1B2540" strokeWidth="1" opacity={0.6} />
+                <line key={`h${y}`} x1="0" y1={y} x2="1200" y2={y} stroke="#E4E7F2" strokeWidth="1" opacity={0.9} />
               ))}
               {[300, 600, 900].map((x) => (
-                <line key={`v${x}`} x1={x} y1="0" x2={x} y2="360" stroke="#1B2540" strokeWidth="1" opacity={0.6} />
+                <line key={`v${x}`} x1={x} y1="0" x2={x} y2="360" stroke="#E4E7F2" strokeWidth="1" opacity={0.9} />
               ))}
             </svg>
 
@@ -80,7 +80,7 @@ export function LocationMap() {
                 position: "absolute",
                 inset: 0,
                 background:
-                  "radial-gradient(ellipse 45% 80% at 78% 50%, rgba(6,182,212,0.16) 0%, transparent 62%), linear-gradient(90deg, rgba(8,18,41,0.7) 0%, rgba(8,18,41,0.3) 55%, rgba(8,18,41,0.2) 100%)",
+                  "radial-gradient(ellipse 45% 80% at 78% 50%, rgba(14,116,144,0.08) 0%, transparent 62%), linear-gradient(90deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0.25) 100%)",
               }}
             />
           </div>
@@ -105,7 +105,7 @@ export function LocationMap() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 11,
-                  color: "#06B6D4",
+                  color: "#0E7490",
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   marginBottom: 10,
@@ -118,7 +118,7 @@ export function LocationMap() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "clamp(32px, 4.5vw, 54px)",
                   fontWeight: 700,
-                  color: "#E2E8F0",
+                  color: "#12142B",
                   lineHeight: 1.1,
                   letterSpacing: "-0.02em",
                   marginBottom: 14,
@@ -130,7 +130,7 @@ export function LocationMap() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: 13,
-                  color: "#64748B",
+                  color: "#676D8A",
                   marginBottom: 24,
                 }}
               >
@@ -148,11 +148,11 @@ export function LocationMap() {
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 13,
                   fontWeight: 500,
-                  color: "#06B6D4",
+                  color: "#0E7490",
                   padding: "8px 18px",
-                  border: "1px solid rgba(6,182,212,0.35)",
+                  border: "1px solid rgba(14,116,144,0.30)",
                   borderRadius: 100,
-                  backgroundColor: "rgba(6,182,212,0.08)",
+                  backgroundColor: "rgba(14,116,144,0.07)",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
                 }}
@@ -172,11 +172,11 @@ export function LocationMap() {
                   fontFamily: "'Inter', sans-serif",
                   fontSize: 13,
                   fontWeight: 500,
-                  color: "#7B61FF",
+                  color: "#6D28D9",
                   padding: "8px 18px",
-                  border: "1px solid rgba(123,97,255,0.35)",
+                  border: "1px solid rgba(109,40,217,0.30)",
                   borderRadius: 100,
-                  backgroundColor: "rgba(123,97,255,0.08)",
+                  backgroundColor: "rgba(109,40,217,0.07)",
                   cursor: "pointer",
                   transition: "all 0.2s ease",
                 }}
@@ -189,10 +189,10 @@ export function LocationMap() {
             {/* RIGHT — location pin symbol */}
             <div style={{ flex: "0 0 auto", display: "flex", justifyContent: "center", alignItems: "center", paddingRight: "clamp(0px, 3vw, 40px)" }}>
               <div style={{ position: "relative", width: 84, height: 84, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 84, height: 84, borderRadius: "50%", background: "rgba(6,182,212,0.07)", animation: "pulse-glow 3s ease-in-out infinite" }} />
-                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 54, height: 54, borderRadius: "50%", background: "rgba(6,182,212,0.10)" }} />
-                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 34, height: 34, borderRadius: "50%", background: "rgba(6,182,212,0.16)" }} />
-                <MapPin size={32} color="#06B6D4" fill="rgba(6,182,212,0.35)" style={{ position: "relative", filter: "drop-shadow(0 3px 16px rgba(6,182,212,0.6))" }} />
+                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 84, height: 84, borderRadius: "50%", background: "rgba(14,116,144,0.07)", animation: "pulse-glow 3s ease-in-out infinite" }} />
+                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 54, height: 54, borderRadius: "50%", background: "rgba(14,116,144,0.10)" }} />
+                <span style={{ position: "absolute", inset: 0, margin: "auto", width: 34, height: 34, borderRadius: "50%", background: "rgba(14,116,144,0.16)" }} />
+                <MapPin size={32} color="#0E7490" fill="rgba(14,116,144,0.25)" style={{ position: "relative", filter: "drop-shadow(0 3px 12px rgba(14,116,144,0.35))" }} />
               </div>
             </div>
           </div>
@@ -201,8 +201,8 @@ export function LocationMap() {
           <style>{`
             .loc-btn:hover {
               transform: translateY(-2px);
-              filter: brightness(1.15);
-              box-shadow: 0 6px 20px rgba(6,182,212,0.18);
+              filter: brightness(1.05);
+              box-shadow: 0 6px 20px rgba(109,40,217,0.14);
             }
           `}</style>
         </div>
