@@ -84,19 +84,30 @@ export function ChatBot({ initialMessage }: { initialMessage?: string }) {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, typing]);
 
-  const handleSend = (text?: string) => {
+  const handleSend = async (text?: string) => {
     const msg = (text ?? input).trim();
     if (!msg) return;
 
+    const history = messages.slice(-8);
     setMessages((prev) => [...prev, { role: "user", content: msg }]);
     setInput("");
     setTyping(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: msg, history }),
+      });
+      if (!res.ok) throw new Error("API error");
+      const data = await res.json();
+      setMessages((prev) => [...prev, { role: "assistant", content: data.reply }]);
+    } catch {
       const response = getResponse(msg);
       setMessages((prev) => [...prev, { role: "assistant", content: response }]);
+    } finally {
       setTyping(false);
-    }, 600 + Math.random() * 400);
+    }
   };
 
   return (
