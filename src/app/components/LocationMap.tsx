@@ -5,6 +5,7 @@ import { portfolioData } from "../data/portfolio";
 export function LocationMap() {
   return (
     <section
+      data-portfolio-section="Location"
       style={{
         backgroundColor: "transparent",
         padding: "0 0 100px",

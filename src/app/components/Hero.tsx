@@ -210,6 +210,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
   return (
     <section
       id="hero"
+      data-portfolio-section="Hero"
       style={{
         minHeight:     "100vh",
         position:      "relative",
@@ -404,6 +405,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
         {/* ────────────── RIGHT COLUMN (60%) ────────────── */}
         <motion.div
           id="about"
+          data-portfolio-section="About"
           className="hero-right"
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
