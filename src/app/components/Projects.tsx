@@ -12,14 +12,25 @@ const CARD_ACCENTS: [string, string][] = [
   ["#047857", "#34D399"], // emerald
 ];
 
+/* Each card pins its accent by id so reordering the grid never reshuffles the
+   colour scheme. Indices map into CARD_ACCENTS above. */
+const ACCENT_OVERRIDES: Record<string, number> = {
+  "ai-resume-analyzer": 0,   // violet
+  "guardian-eye": 1,         // teal
+  "anon": 2,                 // pink
+  "online-voting-system": 3, // amber
+  "amazon-frontend": 4,      // emerald
+  "todo-list": 0,            // violet
+};
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
-  const [a1, a2] = CARD_ACCENTS[index % CARD_ACCENTS.length];
+  const [a1, a2] = CARD_ACCENTS[ACCENT_OVERRIDES[project.id] ?? index % CARD_ACCENTS.length];
 
   const hasLinks = Boolean(project.githubUrl || project.liveUrl);
 
   return (
     <motion.div
-      className="project-card-wrap"
+      className={project.wide ? "project-card-wrap is-wide" : "project-card-wrap"}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -197,6 +208,7 @@ export function Projects() {
   return (
     <section
       id="projects"
+      data-portfolio-section="Projects"
       style={{
         position: "relative",
         zIndex: 1,
@@ -318,9 +330,11 @@ export function Projects() {
           .project-card:hover { transform: none; }
           .project-card:hover .project-shot { transform: none; }
         }
-        /* Bento rhythm: feature the lead project on wide screens */
+        /* Bento rhythm: feature cards flagged wide span 2 columns on wide
+           screens. With three wide cards among six, every row fills exactly
+           (2+1 · 1+2 · 1+2) so nothing is left stranded in a half-empty row. */
         @media (min-width: 940px) {
-          .project-card-wrap:first-child { grid-column: span 2; }
+          .project-card-wrap.is-wide { grid-column: span 2; }
         }
       `}</style>
     </section>

@@ -10,10 +10,16 @@ export interface Project {
   imageFit?: "cover" | "contain";
   /** CSS aspect-ratio for the media box; match the file's native ratio so contain-fit GIFs fill it edge-to-edge. Default "16 / 10". */
   imageAspect?: string;
+  /** Feature card — spans 2 columns on wide screens for a bento rhythm. */
+  wide?: boolean;
 }
 
 // Images live in /public/projects/. Filenames contain spaces, so the paths
 // are wrapped in encodeURI() to stay valid URLs.
+//
+// Card order + `wide` flags drive the bento: three wide cards interleaved with
+// three narrow ones fill every 3-column row exactly, giving a
+// large-small / small-large / large-small rhythm on desktop.
 export const PROJECTS: Project[] = [
   {
     id: "ai-resume-analyzer",
@@ -21,6 +27,7 @@ export const PROJECTS: Project[] = [
     image: "/projects/hireready.gif",
     imageFit: "contain",
     imageAspect: "1588 / 814",
+    wide: true,
     description:
       "An AI-powered platform that analyzes your resume and then takes an interview based on it. Upload your resume — the AI reviews and scores it, highlights weak areas, and then conducts a personalized mock interview built around your resume.",
     tech: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
@@ -38,16 +45,6 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://online-voting-system-for-students.streamlit.app/",
   },
   {
-    id: "anon",
-    name: "Anon",
-    image: encodeURI("/projects/Anon.png"),
-    description:
-      "A fashion e-commerce storefront with category browsing, product filtering, trending and top-rated sections, deal countdowns, and a full shopping cart flow.",
-    tech: ["React", "JavaScript", "CSS3", "Responsive UI"],
-    githubUrl: "https://github.com/prashant-GKV/Anon",
-    liveUrl: "https://anon-teal-alpha.vercel.app/",
-  },
-  {
     id: "todo-list",
     name: "To-Do List",
     image: encodeURI("/projects/To-Do List.png"),
@@ -56,6 +53,35 @@ export const PROJECTS: Project[] = [
     tech: ["Python", "Streamlit"],
     githubUrl: "https://github.com/prashant-GKV/Todo-List",
     liveUrl: "https://prashant-todo-list.streamlit.app/",
+  },
+  {
+    id: "guardian-eye",
+    name: "GuardianEye",
+    image: "/projects/guardianeye.png",
+    imageFit: "contain",
+    // Wide card — 2/1 box; the 2.4:1 screenshot letterboxes lightly on the
+    // accent tint so the whole UI stays visible, uncropped.
+    imageAspect: "2 / 1",
+    wide: true,
+    description:
+      "Watches a driver's eyes, yawns and head pose through a webcam, catches drowsiness or distraction the moment it starts, and escalates from a quiet on-screen warning to a full spoken alarm before it turns dangerous.",
+    tech: ["Next.js", "TypeScript", "MediaPipe", "FastAPI", "scikit-learn", "WebSocket"],
+    githubUrl: "https://github.com/prashant-GKV/guardianEye",
+    liveUrl: "https://guardian-eye-theta.vercel.app",
+  },
+  {
+    id: "anon",
+    name: "Anon",
+    image: encodeURI("/projects/Anon.png"),
+    // Full-page square capture — a 2/1 box crops to the navbar + hero banner,
+    // matching the height of the other wide cards on its row.
+    imageAspect: "2 / 1",
+    wide: true,
+    description:
+      "A fashion e-commerce storefront with category browsing, product filtering, trending and top-rated sections, deal countdowns, and a full shopping cart flow.",
+    tech: ["React", "JavaScript", "CSS3", "Responsive UI"],
+    githubUrl: "https://github.com/prashant-GKV/Anon",
+    liveUrl: "https://anon-teal-alpha.vercel.app/",
   },
   {
     id: "amazon-frontend",
