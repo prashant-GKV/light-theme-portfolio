@@ -4,8 +4,8 @@ export interface Project {
   image: string;
   description: string;
   tech: string[];
-  githubUrl?: string; // to be filled in later
-  liveUrl?: string;   // to be filled in later
+  githubUrl?: string;
+  liveUrl?: string;
   /** "contain" shows the full frame un-cropped (used for animated GIFs); default is cover */
   imageFit?: "cover" | "contain";
   /** CSS aspect-ratio for the media box; match the file's native ratio so contain-fit GIFs fill it edge-to-edge. Default "16 / 10". */
@@ -14,33 +14,40 @@ export interface Project {
   wide?: boolean;
 }
 
-// Images live in /public/projects/. Filenames contain spaces, so the paths
-// are wrapped in encodeURI() to stay valid URLs.
-//
-// Card order + `wide` flags drive the bento: three wide cards interleaved with
-// three narrow ones fill every 3-column row exactly, giving a
-// large-small / small-large / large-small rhythm on desktop.
 export const PROJECTS: Project[] = [
   {
     id: "ai-resume-analyzer",
-    name: "HireReady",
+    name: "HireReady | AI Resume Analyzer & Interviewer",
     image: "/projects/hireready.gif",
     imageFit: "contain",
     imageAspect: "1588 / 814",
     wide: true,
     description:
-      "An AI-powered platform that analyzes your resume and then takes an interview based on it. Upload your resume — the AI reviews and scores it, highlights weak areas, and then conducts a personalized mock interview built around your resume.",
-    tech: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
+      "Developed an AI mock interview platform using Next.js 14, TypeScript, and Zustand with voice interviews, real-time face analysis, speech-to-text, and weighted feedback scoring across 6 categories. Features a multi-provider AI failover router (Gemini, Groq, Mistral, OpenRouter) and an ATS resume analyzer with PDF/DOCX parsing.",
+    tech: ["Next.js 14", "TypeScript", "Zustand", "Tailwind CSS", "Supabase", "JWT Auth", "Vercel"],
     githubUrl: "https://github.com/prashant-GKV/ai-interviewer-and-resume-analyser",
     liveUrl: "https://ai-interviewer-and-resume-analyser.vercel.app/",
+  },
+  {
+    id: "guardian-eye",
+    name: "GuardianEye | Driver Drowsiness Detection System",
+    image: "/projects/guardianeye.png",
+    imageFit: "contain",
+    imageAspect: "2 / 1",
+    wide: true,
+    description:
+      "Architected a real-time drowsiness detection app using Next.js, FastAPI, and MediaPipe FaceLandmarker; tracks eye closure, yawns, head pose, and gaze entirely in-browser. Implemented JWT auth, WebSocket telemetry, dual scikit-learn models, 4-tier alert escalation, an LLM driving coach, and fleet dashboard.",
+    tech: ["Next.js", "FastAPI", "MediaPipe", "scikit-learn", "WebSocket", "Supabase", "Vercel", "Render"],
+    githubUrl: "https://github.com/prashant-GKV/guardianEye",
+    liveUrl: "https://guardian-eye-theta.vercel.app",
   },
   {
     id: "online-voting-system",
     name: "Online Voting System",
     image: encodeURI("/projects/Online Voting System.png"),
     description:
-      "A secure student voting platform with voter registration, one-vote-per-student enforcement, anonymous ballots, and live result tracking once an election closes.",
-    tech: ["Python", "Streamlit", "Pandas"],
+      "Created a full-stack voting portal (Streamlit + PostgreSQL) with role-based access, admin-managed elections (2–10 candidates), live turnout tracking, and result charts. Enforced race-safe one-vote-per-student with DB-level UNIQUE constraints and bcrypt-hashed authentication across a 6-table schema.",
+    tech: ["Python", "Streamlit", "PostgreSQL", "Supabase", "bcrypt"],
     githubUrl: "https://github.com/prashant-GKV/Online-Voting-System",
     liveUrl: "https://online-voting-system-for-students.streamlit.app/",
   },
@@ -55,26 +62,9 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://prashant-todo-list.streamlit.app/",
   },
   {
-    id: "guardian-eye",
-    name: "GuardianEye",
-    image: "/projects/guardianeye.png",
-    imageFit: "contain",
-    // Wide card — 2/1 box; the 2.4:1 screenshot letterboxes lightly on the
-    // accent tint so the whole UI stays visible, uncropped.
-    imageAspect: "2 / 1",
-    wide: true,
-    description:
-      "Watches a driver's eyes, yawns and head pose through a webcam, catches drowsiness or distraction the moment it starts, and escalates from a quiet on-screen warning to a full spoken alarm before it turns dangerous.",
-    tech: ["Next.js", "TypeScript", "MediaPipe", "FastAPI", "scikit-learn", "WebSocket"],
-    githubUrl: "https://github.com/prashant-GKV/guardianEye",
-    liveUrl: "https://guardian-eye-theta.vercel.app",
-  },
-  {
     id: "anon",
     name: "Anon",
     image: encodeURI("/projects/Anon.png"),
-    // Full-page square capture — a 2/1 box crops to the navbar + hero banner,
-    // matching the height of the other wide cards on its row.
     imageAspect: "2 / 1",
     wide: true,
     description:
