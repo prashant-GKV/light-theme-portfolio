@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page {
+    size: letter;
+    margin: 0.35in 0.45in 0.35in 0.45in;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Calibri', 'Arial', 'Helvetica', sans-serif;
+    color: #111111;
+    line-height: 1.35;
+    font-size: 10pt;
+    background: #ffffff;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .name {
+    font-size: 20pt;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #000000;
+  }
+  .contact-info {
+    font-size: 9.5pt;
+    color: #222222;
+  }
+  .contact-info a {
+    color: #0044cc;
+    text-decoration: underline;
+  }
+  .section-title {
+    font-size: 11pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 1.5px solid #111111;
+    padding-bottom: 2px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .skills-group {
+    margin-bottom: 3px;
+    font-size: 9.8pt;
+  }
+  .skills-group strong {
+    font-weight: bold;
+  }
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 10.2pt;
+    margin-top: 5px;
+    margin-bottom: 2px;
+  }
+  .item-sub {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    font-size: 9.8pt;
+    margin-bottom: 3px;
+  }
+  .item-title-link {
+    color: #0044cc;
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 9pt;
+  }
+  ul {
+    margin-left: 18px;
+    margin-bottom: 4px;
+  }
+  li {
+    margin-bottom: 2px;
+    font-size: 9.6pt;
+    text-align: justify;
+  }
+  .cert-list, .achieve-list {
+    margin-left: 18px;
+    margin-top: 3px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="name">PRASHANT SAINI</div>
+  <div class="contact-info">
+    +91-9927235913 &nbsp;|&nbsp; 
+    <a href="mailto:ps0875135@gmail.com">ps0875135@gmail.com</a> &nbsp;|&nbsp; 
+    <a href="https://linkedin.com/in/prashant-saini-0660aa294">LinkedIn</a> &nbsp;|&nbsp; 
+    <a href="https://github.com/prashant-GKV">GitHub</a> &nbsp;|&nbsp; 
+    <a href="https://prashant-saini.vercel.app">Portfolio</a> &nbsp;|&nbsp; 
+    <a href="https://leetcode.com/u/Prashant_Saini__/">LeetCode</a>
+  </div>
+</div>
+
+<div class="section-title">TECHNICAL SKILLS</div>
+<div class="skills-group"><strong>Languages:</strong> JavaScript, Python, Java, SQL</div>
+<div class="skills-group"><strong>Frontend:</strong> React.js, Next.js 14 (App Router), Tailwind CSS, Framer Motion</div>
+<div class="skills-group"><strong>Backend:</strong> FastAPI, Node.js, REST APIs, WebSockets, JWT Authentication</div>
+<div class="skills-group"><strong>Databases:</strong> PostgreSQL, Supabase, SQLite</div>
+<div class="skills-group"><strong>AI/ML &amp; Computer Vision:</strong> MediaPipe, OpenCV, Scikit-learn, EAR/PERCLOS-based Fatigue Modeling</div>
+<div class="skills-group"><strong>Developer Tools:</strong> Git, GitHub, Docker, Vercel, CI/CD (GitHub Auto-Deploy)</div>
+
+<div class="section-title">PROJECTS</div>
+
+<div class="item-header">
+  <span>HireReady | AI Resume Analyzer and Interviewer</span>
+  <span style="font-weight: normal; font-size: 9.5pt;">
+    <a href="https://ai-interviewer-and-resume-analyser.vercel.app/" class="item-title-link">Live Demo</a> • 
+    <a href="https://github.com/prashant-GKV/ai-interviewer-and-resume-analyser" class="item-title-link">GitHub</a>
+  </span>
+</div>
+<ul>
+  <li>Developed an AI mock interview platform using Next.js 14, TypeScript, and Zustand with voice interviews, real-time face analysis, speech-to-text, and weighted feedback scoring across 6 categories.</li>
+  <li>Engineered a multi-provider AI failover router (Gemini, Groq, Mistral, OpenRouter) with retry logic and a full heuristic fallback layer for zero-API-key operation.</li>
+  <li>Implemented an ATS resume analyzer with PDF/DOCX parsing, AI scoring, and weak-bullet rewriting; secured with JWT auth and Supabase sessions, deployed on Vercel with GitHub-integrated CI/CD.</li>
+</ul>
+
+<div class="item-header">
+  <span>GuardianEye | Driver Drowsiness Detection System</span>
+  <span style="font-weight: normal; font-size: 9.5pt;">
+    <a href="https://guardian-eye-theta.vercel.app" class="item-title-link">Live Demo</a> • 
+    <a href="https://github.com/prashant-GKV/guardianEye" class="item-title-link">GitHub</a>
+  </span>
+</div>
+<ul>
+  <li>Architected a real-time drowsiness detection app using Next.js, FastAPI, and MediaPipe FaceLandmarker; tracks eye closure, yawns, head pose, and gaze entirely in-browser — no video leaves the device.</li>
+  <li>Implemented JWT auth, WebSocket telemetry, dual scikit-learn models, 4-tier alert escalation, an LLM driving coach, a fleet dashboard, and CSV/PDF export.</li>
+  <li>Deployed the frontend on Vercel and the FastAPI backend on Render with Supabase PostgreSQL, using GitHub-integrated auto-deployment on every push.</li>
+</ul>
+
+<div class="item-header">
+  <span>Online Voting System</span>
+  <span style="font-weight: normal; font-size: 9.5pt;">
+    <a href="https://github.com/prashant-GKV/Online-Voting-System" class="item-title-link">GitHub</a>
+  </span>
+</div>
+<ul>
+  <li>Created a full-stack voting portal (Streamlit + PostgreSQL) with role-based access, admin-managed elections (2–10 candidates), live turnout tracking, and result charts.</li>
+  <li>Enforced one-vote-per-student with a DB-level UNIQUE constraint and IntegrityError rollback (race-safe), decoupled voter identity from vote choice for ballot secrecy, and hid live counts to prevent turnout bias.</li>
+  <li>Deployed on Streamlit Community Cloud with GitHub-integrated CI/CD, a Supabase/Neon-ready Postgres connection, and bcrypt-hashed auth across a 6-table schema.</li>
+</ul>
+
+<div class="section-title">EDUCATION</div>
+<div class="item-header">
+  <span>Gurukul Kangri Vishwavidyalaya, Haridwar, Uttarakhand, India</span>
+  <span>Aug 2023 – May 2027</span>
+</div>
+<div class="item-sub">
+  <span>Bachelor of Technology in Computer Science and Engineering — CGPA: 8.50/10.0</span>
+  <span></span>
+</div>
+
+<div class="section-title">EXPERIENCE</div>
+
+<div class="item-header">
+  <span>Applied AI Intern | AICTE &amp; IBM SkillsBuild (via CSRBOX)</span>
+  <span>Dec 2025 – Jan 2026</span>
+</div>
+<ul>
+  <li>Designed and built practical AI-based solutions during a 6-week Applied AI Internship, progressing from core AI/ML concepts to hands-on implementation.</li>
+</ul>
+
+<div class="item-header">
+  <span>Front-end Web Development Intern | IBM SkillsBuild (via CSRBOX)</span>
+  <span>Jun 2024 – Aug 2024</span>
+</div>
+<ul>
+  <li>Built and deployed a multi-page responsive website on ocean conservation (UN SDG 14), covering marine ecosystems, pollution, and sustainability content. <a href="https://prashant-gkv.github.io/ibm-skillsbuild-frontend-project/" class="item-title-link">Live Demo</a></li>
+</ul>
+
+<div class="section-title">CERTIFICATIONS</div>
+<ul class="cert-list">
+  <li>Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</li>
+  <li>Cloud Computing — NPTEL (IIT Kharagpur), Elite, 80% (Jul–Oct 2024)</li>
+</ul>
+
+<div class="section-title">ACHIEVEMENTS</div>
+<ul class="achieve-list">
+  <li>Solved 185+ Data Structures &amp; Algorithms problems on LeetCode</li>
+</ul>
+
+</body>
+</html>

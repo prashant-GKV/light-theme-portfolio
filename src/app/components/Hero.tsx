@@ -2,18 +2,17 @@ import { useEffect, useRef, type CSSProperties, type ReactNode, type RefObject }
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Github, Linkedin, Code2, Mail, Eye } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
-import cvFile from "@/imports/CV.pdf";
-
+import cvFile from "@/imports/Prashant_Resume.pdf";
 /* ── Typewriter hook (single phrase: type → pause → delete → repeat) ──── */
 function useTypewriter(
   text: string,
-  typingMs   = 90,
+  typingMs = 90,
   deletingMs = 45,
   pauseAfter = 2200,
-  pauseBefore= 600,
+  pauseBefore = 600,
 ) {
   const display = useRef<HTMLSpanElement>(null);
-  const state   = useRef({ charIdx: 0, deleting: false });
+  const state = useRef({ charIdx: 0, deleting: false });
 
   useEffect(() => {
     function tick(): number {
@@ -87,7 +86,7 @@ function playNote(step: number) {
     if (!getAudioCtx()) return;
     if (audioCtx!.state === "suspended") {
       // resume() is async — schedule the note once the context is running
-      audioCtx!.resume().then(() => scheduleNote(step)).catch(() => {});
+      audioCtx!.resume().then(() => scheduleNote(step)).catch(() => { });
       return;
     }
     scheduleNote(step);
@@ -101,7 +100,7 @@ function scheduleNote(step: number) {
     if (!audioCtx || audioCtx.state !== "running") return;
 
     const freq = NOTE_SCALE[step % NOTE_SCALE.length];
-    const now  = audioCtx.currentTime;
+    const now = audioCtx.currentTime;
 
     // Glassy bell / celesta tone: a bright fundamental plus inharmonic
     // metallic partials, each with its own long shimmering decay.
@@ -110,13 +109,13 @@ function scheduleNote(step: number) {
     master.connect(audioCtx.destination);
 
     const partials = [
-      { mult: 1,    type: "sine" as OscillatorType, level: 0.14, dur: 1.1 },
+      { mult: 1, type: "sine" as OscillatorType, level: 0.14, dur: 1.1 },
       { mult: 2.76, type: "sine" as OscillatorType, level: 0.05, dur: 0.8 }, // inharmonic → bell-like
-      { mult: 5.4,  type: "sine" as OscillatorType, level: 0.03, dur: 0.5 }, // high sparkle
+      { mult: 5.4, type: "sine" as OscillatorType, level: 0.03, dur: 0.5 }, // high sparkle
     ];
 
     partials.forEach(({ mult, type, level, dur }) => {
-      const osc  = audioCtx!.createOscillator();
+      const osc = audioCtx!.createOscillator();
       const gain = audioCtx!.createGain();
       osc.type = type;
       osc.frequency.value = freq * mult;
@@ -140,9 +139,9 @@ function useTilt(el: RefObject<HTMLDivElement | null>, max = 10) {
     const node = el.current;
     if (!node) return;
     const onMove = (e: MouseEvent) => {
-      const r  = node.getBoundingClientRect();
-      const rx = ((e.clientY - r.top  - r.height / 2) / (r.height / 2)) * -max;
-      const ry = ((e.clientX - r.left - r.width  / 2) / (r.width  / 2)) *  max;
+      const r = node.getBoundingClientRect();
+      const rx = ((e.clientY - r.top - r.height / 2) / (r.height / 2)) * -max;
+      const ry = ((e.clientX - r.left - r.width / 2) / (r.width / 2)) * max;
       node.style.transform = `perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.03)`;
     };
     const onLeave = () => { node.style.transform = "perspective(600px) rotateX(0) rotateY(0) scale(1)"; };
@@ -156,21 +155,21 @@ function useTilt(el: RefObject<HTMLDivElement | null>, max = 10) {
 const CHIPS = ["Full Stack Dev", "Problem Solver"];
 
 const SOCIALS = [
-  { icon: <Github   size={18}/>, href: portfolioData.identity.github,   label: "GitHub",   color: "#24292F" },
-  { icon: <Linkedin size={18}/>, href: portfolioData.identity.linkedin, label: "LinkedIn", color: "#0A66C2" },
-  { icon: <Code2    size={18}/>, href: portfolioData.identity.leetcode, label: "LeetCode", color: "#D97706" },
-  { icon: <Mail     size={18}/>, href: `mailto:${portfolioData.identity.email}`, label: "Email", color: "#0E7490" },
+  { icon: <Github size={18} />, href: portfolioData.identity.github, label: "GitHub", color: "#24292F" },
+  { icon: <Linkedin size={18} />, href: portfolioData.identity.linkedin, label: "LinkedIn", color: "#0A66C2" },
+  { icon: <Code2 size={18} />, href: portfolioData.identity.leetcode, label: "LeetCode", color: "#D97706" },
+  { icon: <Mail size={18} />, href: `mailto:${portfolioData.identity.email}`, label: "Email", color: "#0E7490" },
 ];
 
 /* ── Gradient highlight helper ───────────────────────────────────────── */
 function H({ children, g }: { children: ReactNode; g: string }) {
   return (
     <span style={{
-      background:          g,
-      WebkitBackgroundClip:"text",
+      background: g,
+      WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
-      backgroundClip:      "text",
-      fontWeight:           600,
+      backgroundClip: "text",
+      fontWeight: 600,
     }}>
       {children}
     </span>
@@ -181,17 +180,17 @@ function H({ children, g }: { children: ReactNode; g: string }) {
 // cyan→purple gradient for a clean, cohesive, professional look.
 const ACCENT = "linear-gradient(135deg, #0E7490, #6D28D9)";
 const G = {
-  cyanPurple:  ACCENT,
+  cyanPurple: ACCENT,
   emeraldCyan: ACCENT,
-  purpleBlue:  ACCENT,
-  pinkPurple:  ACCENT,
-  blueCyan:    ACCENT,
-  purplePink:  ACCENT,
+  purpleBlue: ACCENT,
+  pinkPurple: ACCENT,
+  blueCyan: ACCENT,
+  purplePink: ACCENT,
 };
 
 /* ── Component ───────────────────────────────────────────────────────── */
 export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
-  const tiltRef   = useRef<HTMLDivElement>(null);
+  const tiltRef = useRef<HTMLDivElement>(null);
   const typedSpan = useTypewriter("Full Stack Developer");
   useTilt(tiltRef);
 
@@ -201,10 +200,10 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
   /* paragraph text style */
   const pStyle: CSSProperties = {
     fontFamily: "'Inter', sans-serif",
-    fontSize:    16,
-    lineHeight:  1.8,
-    color:       "#3E4258",
-    margin:       0,
+    fontSize: 16,
+    lineHeight: 1.8,
+    color: "#3E4258",
+    margin: 0,
   };
 
   return (
@@ -212,13 +211,13 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
       id="hero"
       data-portfolio-section="Hero"
       style={{
-        minHeight:     "100vh",
-        position:      "relative",
-        zIndex:         1,
-        display:        "flex",
-        flexDirection:  "column",
-        paddingTop:     72,
-        overflow:       "hidden",
+        minHeight: "100vh",
+        position: "relative",
+        zIndex: 1,
+        display: "flex",
+        flexDirection: "column",
+        paddingTop: 72,
+        overflow: "hidden",
       }}
     >
       {/* Radial glow */}
@@ -229,15 +228,15 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
 
       {/* ── Two-column main area ── */}
       <div className="hero-main" style={{
-        flex:       1,
-        display:    "flex",
+        flex: 1,
+        display: "flex",
         alignItems: "center",
-        flexWrap:   "wrap",
-        gap:        "clamp(32px, 5vw, 64px)",
-        padding:    "clamp(40px, 5vw, 72px) clamp(20px, 5vw, 64px)",
-        maxWidth:   1280,
-        margin:     "0 auto",
-        width:      "100%",
+        flexWrap: "wrap",
+        gap: "clamp(32px, 5vw, 64px)",
+        padding: "clamp(40px, 5vw, 72px) clamp(20px, 5vw, 64px)",
+        maxWidth: 1280,
+        margin: "0 auto",
+        width: "100%",
       }}>
 
         {/* ────────────── LEFT COLUMN (40%) ────────────── */}
@@ -246,11 +245,11 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           style={{
-            display:       "flex",
+            display: "flex",
             flexDirection: "column",
-            alignItems:    "center",
-            gap:            20,
-            flex:          "0 0 auto",
+            alignItems: "center",
+            gap: 20,
+            flex: "0 0 auto",
           }}
         >
           {/* Floating + tilt photo */}
@@ -260,20 +259,20 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
           >
             <div style={{ position: "relative", width: 210, height: 210 }}>
               <div style={{
-                position:     "absolute",
-                inset:        -3,
+                position: "absolute",
+                inset: -3,
                 borderRadius: "50%",
-                background:   "conic-gradient(from 0deg, #0E7490, #6D28D9, #047857, #DB2777, #0E7490)",
-                animation:    "borderSpin 4s linear infinite",
+                background: "conic-gradient(from 0deg, #0E7490, #6D28D9, #047857, #DB2777, #0E7490)",
+                animation: "borderSpin 4s linear infinite",
               }} />
               <div style={{
-                position:        "relative",
-                width:           210, height: 210,
-                borderRadius:    "50%",
-                overflow:        "hidden",
+                position: "relative",
+                width: 210, height: 210,
+                borderRadius: "50%",
+                overflow: "hidden",
                 backgroundColor: "#FFFFFF",
-                border:          "4px solid #FFFFFF",
-                animation:       "pulse-glow 3s ease-in-out infinite",
+                border: "4px solid #FFFFFF",
+                animation: "pulse-glow 3s ease-in-out infinite",
               }}>
                 <img
                   src={portfolioData.identity.avatar}
@@ -295,15 +294,15 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             style={{
-              fontFamily:    "'Playfair Display', serif",
-              fontSize:      "clamp(24px, 3.2vw, 38px)",
-              fontWeight:     900,
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(24px, 3.2vw, 38px)",
+              fontWeight: 900,
               letterSpacing: "0.04em",
-              lineHeight:     1.1,
-              textAlign:     "center",
-              color:         "#4C1D95",
-              cursor:        "default",
-              margin:         0,
+              lineHeight: 1.1,
+              textAlign: "center",
+              color: "#4C1D95",
+              cursor: "default",
+              margin: 0,
             }}
           >
             Prashant Saini
@@ -315,15 +314,15 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.38 }}
             style={{
-              display:       "flex",
-              alignItems:    "center",
-              gap:            5,
-              fontFamily:   "'Space Grotesk', sans-serif",
-              fontSize:       12,
-              fontWeight:     500,
-              color:         "#0E7490",
+              display: "flex",
+              alignItems: "center",
+              gap: 5,
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 12,
+              fontWeight: 500,
+              color: "#0E7490",
               letterSpacing: "0.04em",
-              margin:         0,
+              margin: 0,
             }}
           >
             <MapPin size={12} />
@@ -339,17 +338,17 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
           >
             {CHIPS.map((chip) => (
               <span key={chip} style={{
-                fontFamily:    "'Space Grotesk', sans-serif",
-                fontSize:       10,
-                fontWeight:     600,
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 10,
+                fontWeight: 600,
                 letterSpacing: "0.08em",
                 textTransform: "uppercase",
-                padding:       "4px 12px",
-                borderRadius:   100,
-                border:        "1px solid rgba(14,116,144,0.28)",
-                background:    "rgba(14,116,144,0.07)",
-                color:         "#0E7490",
-                whiteSpace:    "nowrap",
+                padding: "4px 12px",
+                borderRadius: 100,
+                border: "1px solid rgba(14,116,144,0.28)",
+                background: "rgba(14,116,144,0.07)",
+                color: "#0E7490",
+                whiteSpace: "nowrap",
               }}>
                 {chip}
               </span>
@@ -372,28 +371,28 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 title={s.label}
                 style={{
                   width: 38, height: 38,
-                  borderRadius:   10,
-                  display:        "flex",
-                  alignItems:     "center",
+                  borderRadius: 10,
+                  display: "flex",
+                  alignItems: "center",
                   justifyContent: "center",
-                  color:          s.color,
-                  border:         `1px solid ${s.color}30`,
-                  background:     `linear-gradient(140deg, #FFFFFF 30%, ${s.color}12 100%)`,
-                  boxShadow:      "0 1px 2px rgba(18,20,43,0.04)",
-                  transition:     "all 0.2s ease",
+                  color: s.color,
+                  border: `1px solid ${s.color}30`,
+                  background: `linear-gradient(140deg, #FFFFFF 30%, ${s.color}12 100%)`,
+                  boxShadow: "0 1px 2px rgba(18,20,43,0.04)",
+                  transition: "all 0.2s ease",
                   textDecoration: "none",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color       = s.color;
+                  e.currentTarget.style.color = s.color;
                   e.currentTarget.style.borderColor = `${s.color}66`;
-                  e.currentTarget.style.boxShadow   = `0 6px 18px ${s.color}30`;
-                  e.currentTarget.style.transform   = "translateY(-3px)";
+                  e.currentTarget.style.boxShadow = `0 6px 18px ${s.color}30`;
+                  e.currentTarget.style.transform = "translateY(-3px)";
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color       = s.color;
+                  e.currentTarget.style.color = s.color;
                   e.currentTarget.style.borderColor = `${s.color}30`;
-                  e.currentTarget.style.boxShadow   = "0 1px 2px rgba(18,20,43,0.04)";
-                  e.currentTarget.style.transform   = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "0 1px 2px rgba(18,20,43,0.04)";
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
                 {s.icon}
@@ -418,13 +417,13 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28 }}
             style={{
-              fontFamily:    "'Space Grotesk', sans-serif",
-              fontSize:       14,
-              fontWeight:     500,
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 14,
+              fontWeight: 500,
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              color:         "#12142B",
-              margin:         0,
+              color: "#12142B",
+              margin: 0,
             }}
           >
             I'm a
@@ -438,31 +437,31 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             transition={{ delay: 0.35 }}
           >
             <h2 className="hero-role" style={{
-              fontFamily:    "'Syne', sans-serif",
-              fontSize:      "clamp(24px, 3.6vw, 46px)",
-              fontWeight:     800,
+              fontFamily: "'Syne', sans-serif",
+              fontSize: "clamp(24px, 3.6vw, 46px)",
+              fontWeight: 800,
               letterSpacing: "-0.03em",
-              lineHeight:     1.05,
-              margin:         0,
-              whiteSpace:    "nowrap",
+              lineHeight: 1.05,
+              margin: 0,
+              whiteSpace: "nowrap",
             }}>
               <span style={{
-                background:          "linear-gradient(90deg, #0E7490, #6D28D9, #DB2777, #0E7490)",
-                backgroundSize:      "300% 100%",
-                WebkitBackgroundClip:"text",
+                background: "linear-gradient(90deg, #0E7490, #6D28D9, #DB2777, #0E7490)",
+                backgroundSize: "300% 100%",
+                WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                backgroundClip:      "text",
-                animation:           "gradient-flow 6s ease-in-out infinite",
-                display:             "inline-block",
+                backgroundClip: "text",
+                animation: "gradient-flow 6s ease-in-out infinite",
+                display: "inline-block",
               }}>
                 <span ref={typedSpan} />
               </span>
               {/* Blinking cursor */}
               <span style={{
-                color:      "#6D28D9",
-                fontWeight:  300,
-                animation:  "cursor-blink 0.6s step-end infinite",
-                marginLeft:  3,
+                color: "#6D28D9",
+                fontWeight: 300,
+                animation: "cursor-blink 0.6s step-end infinite",
+                marginLeft: 3,
               }}>|</span>
             </h2>
           </motion.div>
@@ -527,11 +526,11 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               <span
                 onClick={() => document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })}
                 style={{
-                  color:         "#0E7490",
-                  fontWeight:     700,
-                  cursor:         "pointer",
+                  color: "#0E7490",
+                  fontWeight: 700,
+                  cursor: "pointer",
                   textDecoration: "none",
-                  transition:    "text-shadow 0.2s, text-decoration-color 0.2s",
+                  transition: "text-shadow 0.2s, text-decoration-color 0.2s",
                   textDecorationLine: "underline",
                   textDecorationColor: "transparent",
                 }}
@@ -559,45 +558,45 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
           >
             <div
               style={{
-                flex:           1,
-                display:        "flex",
-                alignItems:     "center",
-                gap:             10,
-                padding:        "11px 16px",
-                borderRadius:   12,
-                border:         "1px solid rgba(18,20,43,0.10)",
-                background:     "#FFFFFF",
-                boxShadow:      "0 1px 2px rgba(18,20,43,0.04), 0 4px 12px rgba(18,20,43,0.05)",
-                transition:     "border-color 0.2s",
+                flex: 1,
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                padding: "11px 16px",
+                borderRadius: 12,
+                border: "1px solid rgba(18,20,43,0.10)",
+                background: "#FFFFFF",
+                boxShadow: "0 1px 2px rgba(18,20,43,0.04), 0 4px 12px rgba(18,20,43,0.05)",
+                transition: "border-color 0.2s",
               }}
               onFocusCapture={(e) => (e.currentTarget.style.borderColor = "rgba(109,40,217,0.45)")}
-              onBlurCapture={(e)  => (e.currentTarget.style.borderColor = "rgba(18,20,43,0.10)")}
+              onBlurCapture={(e) => (e.currentTarget.style.borderColor = "rgba(18,20,43,0.10)")}
             >
               <input
                 placeholder="Ask me anything about Prashant…"
                 onKeyDown={(e) => e.key === "Enter" && onChatOpen((e.target as HTMLInputElement).value)}
                 style={{
-                  flex:       1,
+                  flex: 1,
                   background: "none",
-                  border:     "none",
-                  outline:    "none",
+                  border: "none",
+                  outline: "none",
                   fontFamily: "'Inter', sans-serif",
-                  fontSize:   14,
-                  color:      "var(--text-primary)",
+                  fontSize: 14,
+                  color: "var(--text-primary)",
                 }}
               />
               <button
                 onClick={() => onChatOpen()}
                 style={{
-                  background:   "linear-gradient(135deg, #0E7490, #6D28D9)",
-                  border:       "none",
-                  borderRadius:  8,
-                  padding:      "5px 12px",
-                  color:        "#fff",
-                  cursor:       "pointer",
-                  fontSize:      13,
-                  fontWeight:    600,
-                  fontFamily:   "'Space Grotesk', sans-serif",
+                  background: "linear-gradient(135deg, #0E7490, #6D28D9)",
+                  border: "none",
+                  borderRadius: 8,
+                  padding: "5px 12px",
+                  color: "#fff",
+                  cursor: "pointer",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
                 Ask
@@ -617,16 +616,16 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             <button
               onClick={() => scrollTo("#projects")}
               style={{
-                fontFamily:    "'Space Grotesk', sans-serif",
-                fontSize:       14, fontWeight: 700,
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 14, fontWeight: 700,
                 letterSpacing: "0.06em", textTransform: "uppercase",
-                padding:       "12px 28px", borderRadius: 12,
-                border:        "none",
-                background:    "linear-gradient(135deg, #0E7490, #6D28D9)",
-                color:         "#fff", cursor: "pointer",
-                display:       "flex", alignItems: "center", gap: 8,
-                boxShadow:     "0 4px 18px rgba(109,40,217,0.22)",
-                transition:    "transform 0.18s ease, box-shadow 0.18s ease",
+                padding: "12px 28px", borderRadius: 12,
+                border: "none",
+                background: "linear-gradient(135deg, #0E7490, #6D28D9)",
+                color: "#fff", cursor: "pointer",
+                display: "flex", alignItems: "center", gap: 8,
+                boxShadow: "0 4px 18px rgba(109,40,217,0.22)",
+                transition: "transform 0.18s ease, box-shadow 0.18s ease",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
@@ -646,26 +645,26 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontFamily:    "'Space Grotesk', sans-serif",
-                fontSize:       14, fontWeight: 600,
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 14, fontWeight: 600,
                 letterSpacing: "0.06em", textTransform: "uppercase",
-                padding:       "12px 24px", borderRadius: 12,
-                border:        "1px solid rgba(18,20,43,0.12)",
-                background:    "#FFFFFF",
-                boxShadow:     "0 1px 2px rgba(18,20,43,0.04)",
-                color:         "var(--text-primary)",
-                cursor:        "pointer",
-                display:       "flex", alignItems: "center", gap: 8,
-                textDecoration:"none",
-                transition:    "border-color 0.2s, box-shadow 0.2s",
+                padding: "12px 24px", borderRadius: 12,
+                border: "1px solid rgba(18,20,43,0.12)",
+                background: "#FFFFFF",
+                boxShadow: "0 1px 2px rgba(18,20,43,0.04)",
+                color: "var(--text-primary)",
+                cursor: "pointer",
+                display: "flex", alignItems: "center", gap: 8,
+                textDecoration: "none",
+                transition: "border-color 0.2s, box-shadow 0.2s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "rgba(109,40,217,0.45)";
-                e.currentTarget.style.boxShadow   = "0 6px 20px rgba(109,40,217,0.14)";
+                e.currentTarget.style.boxShadow = "0 6px 20px rgba(109,40,217,0.14)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "rgba(18,20,43,0.12)";
-                e.currentTarget.style.boxShadow   = "0 1px 2px rgba(18,20,43,0.04)";
+                e.currentTarget.style.boxShadow = "0 1px 2px rgba(18,20,43,0.04)";
               }}
             >
               <Eye size={15} /> View Resume
@@ -675,14 +674,14 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
             <button
               onClick={() => scrollTo("#contact")}
               style={{
-                fontFamily:    "'Space Grotesk', sans-serif",
-                fontSize:       14, fontWeight: 600,
-                color:         "#0E7490",
-                background:    "none", border: "none",
-                cursor:        "pointer",
-                display:       "flex", alignItems: "center", gap: 6,
-                padding:       "12px 4px",
-                transition:    "gap 0.2s",
+                fontFamily: "'Space Grotesk', sans-serif",
+                fontSize: 14, fontWeight: 600,
+                color: "#0E7490",
+                background: "none", border: "none",
+                cursor: "pointer",
+                display: "flex", alignItems: "center", gap: 6,
+                padding: "12px 4px",
+                transition: "gap 0.2s",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.gap = "10px")}
               onMouseLeave={(e) => (e.currentTarget.style.gap = "6px")}
@@ -714,26 +713,26 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
                 <span
                   key={i}
                   style={{
-                    fontFamily:    "'Syne', sans-serif",
-                    fontSize:       "clamp(16px, 3vw, 40px)",
-                    fontWeight:     800,
-                    color:          isSpace ? "transparent" : "rgba(18,20,43,0.10)",
+                    fontFamily: "'Syne', sans-serif",
+                    fontSize: "clamp(16px, 3vw, 40px)",
+                    fontWeight: 800,
+                    color: isSpace ? "transparent" : "rgba(18,20,43,0.10)",
                     letterSpacing: "0.04em",
-                    userSelect:    "none",
-                    transition:    "color 0.2s, text-shadow 0.2s, transform 0.15s",
-                    cursor:        isSpace ? "default" : "pointer",
+                    userSelect: "none",
+                    transition: "color 0.2s, text-shadow 0.2s, transform 0.15s",
+                    cursor: isSpace ? "default" : "pointer",
                   }}
                   onMouseEnter={(e) => {
                     if (isSpace) return;
                     playNote(step);
-                    e.currentTarget.style.color      = "#6D28D9";
+                    e.currentTarget.style.color = "#6D28D9";
                     e.currentTarget.style.textShadow = "0 0 20px rgba(109,40,217,0.30)";
-                    e.currentTarget.style.transform  = "translateY(-4px)";
+                    e.currentTarget.style.transform = "translateY(-4px)";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color      = isSpace ? "transparent" : "rgba(18,20,43,0.10)";
+                    e.currentTarget.style.color = isSpace ? "transparent" : "rgba(18,20,43,0.10)";
                     e.currentTarget.style.textShadow = "none";
-                    e.currentTarget.style.transform  = "translateY(0)";
+                    e.currentTarget.style.transform = "translateY(0)";
                   }}
                   onClick={() => { if (!isSpace) playNote(step); }}
                 >
@@ -750,11 +749,11 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
         style={{
-          textAlign:     "center",
-          padding:       "12px 0 24px",
-          fontFamily:   "'Space Grotesk', sans-serif",
-          fontSize:       12, fontWeight: 500,
-          color:         "#676D8A",
+          textAlign: "center",
+          padding: "12px 0 24px",
+          fontFamily: "'Space Grotesk', sans-serif",
+          fontSize: 12, fontWeight: 500,
+          color: "#676D8A",
           letterSpacing: "0.1em",
           textTransform: "uppercase",
         }}
