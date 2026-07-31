@@ -23,15 +23,15 @@ const LEETCODE_URL = "https://leetcode.com/u/Prashant_Saini__/";
 const GITHUB_URL   = "https://github.com/prashant-GKV";
 
 const CERTS = [
-  { id:1, title:"Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate", issuer:"Oracle Cloud Infrastructure", date:"2025", badge:"OCI AI Associate", color:"#DC2626" },
+  { id:1, title:"Applied AI Internship",          issuer:"IBM SkillsBuild · CSRBOX · AICTE", date:"Dec 2025–Jan 2026", badge:"6-week internship",   color:"#0053D6", img:certAI      },
   { id:2, title:"Cloud Computing",                 issuer:"NPTEL · IIT Kharagpur",            date:"Jul–Oct 2024",      badge:"🥇 Elite · 80%",      color:"#B45309", img:certCloud   },
-  { id:3, title:"Applied AI Internship",          issuer:"IBM SkillsBuild · CSRBOX · AICTE", date:"Dec 2025–Jan 2026", badge:"6-week internship",   color:"#0053D6", img:certAI      },
+  { id:3, title:"Java Programming",                issuer:"CodSoft",                          date:"Jul–Aug 2025",      badge:"4-week internship",   color:"#C2410C", img:certCodSoft },
   { id:4, title:"Front-End Web Development",       issuer:"IBM SkillsBuild · CSRBOX",         date:"Jun–Aug 2024",      badge:"6-week internship",   color:"#0053D6", img:certFEWD    },
   { id:5, title:"Data Analytics",                  issuer:"IBM SkillsBuild · CSRBOX",         date:"Dec 2024–Jan 2025", badge:"Winter Cert Program", color:"#0053D6", img:certData    },
-  { id:6, title:"Java Programming",                issuer:"CodSoft",                          date:"Jul–Aug 2025",      badge:"4-week internship",   color:"#C2410C", img:certCodSoft },
-  { id:7, title:"Data Science",                    issuer:"ShadowFox",                        date:"Jan 2025",          badge:"1-month internship",  color:"#8A6D3B", img:certShadow  },
-  { id:8, title:"ChatGPT for Everyone",            issuer:"GUVI · Google for Education",      date:"Oct 2024",          badge:"Course completion",   color:"#15803D", img:certGuvi    },
-  { id:9, title:"HTML & CSS: Beg. to Advanced",   issuer:"Udemy",                            date:"Sep 2024",          badge:"5 hours",             color:"#7E22CE", img:certUdemy1  },
+  { id:6, title:"Data Science",                    issuer:"ShadowFox",                        date:"Jan 2025",          badge:"1-month internship",  color:"#8A6D3B", img:certShadow  },
+  { id:7, title:"ChatGPT for Everyone",            issuer:"GUVI · Google for Education",      date:"Oct 2024",          badge:"Course completion",   color:"#15803D", img:certGuvi    },
+  { id:8, title:"HTML & CSS: Beg. to Advanced",   issuer:"Udemy",                            date:"Sep 2024",          badge:"5 hours",             color:"#7E22CE", img:certUdemy1  },
+  { id:9, title:"Playing with Binary",             issuer:"Udemy",                            date:"Sep 2024",          badge:"1 hour",              color:"#7E22CE", img:certUdemy2  },
 ];
 
 

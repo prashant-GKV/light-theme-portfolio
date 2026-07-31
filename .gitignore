@@ -26,6 +26,6 @@ yarn-error.log*
 
 # Vercel
 .vercel
-.env*
 
-scratch/
+.vercel
+.env*
