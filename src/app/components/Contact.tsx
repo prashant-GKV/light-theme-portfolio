@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { Mail, Linkedin, Github, Code2, Instagram, Download } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
-import cvFile from "@/imports/Prashant_Resume.pdf";
+
 const LINKS = [
   { icon: <Linkedin size={18} />, label: "LinkedIn", href: portfolioData.identity.linkedin, color: "#0A66C2" },
   { icon: <Github size={18} />, label: "GitHub", href: portfolioData.identity.github, color: "#24292F" },
@@ -117,8 +117,8 @@ export function Contact() {
           </div>
 
           <a
-            href={cvFile}
-            download="Prashant_Saini_CV.pdf"
+            href="/Prashant_Resume.pdf"
+            download="Prashant_Resume.pdf"
             style={{
               display: "inline-flex",
               alignItems: "center",

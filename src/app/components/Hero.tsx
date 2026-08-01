@@ -2,7 +2,7 @@ import { useEffect, useRef, type CSSProperties, type ReactNode, type RefObject }
 import { motion } from "motion/react";
 import { ArrowRight, MapPin, Github, Linkedin, Code2, Mail, Eye } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
-import cvFile from "@/imports/Prashant_Resume.pdf";
+
 /* ── Typewriter hook (single phrase: type → pause → delete → repeat) ──── */
 function useTypewriter(
   text: string,
@@ -641,7 +641,7 @@ export function Hero({ onChatOpen }: { onChatOpen: (msg?: string) => void }) {
 
             {/* View Resume — opens the PDF in a new tab (no download) */}
             <a
-              href={cvFile}
+              href="/Prashant_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               style={{
