@@ -1,13 +1,12 @@
 import { motion } from "motion/react";
 import { Mail, Linkedin, Github, Code2, Instagram, Download } from "lucide-react";
 import { portfolioData } from "../data/portfolio";
-import cvFile from "@/imports/CV.pdf";
-
+import cvFile from "@/imports/Prashant_Resume.pdf";
 const LINKS = [
-  { icon: <Linkedin  size={18}/>, label: "LinkedIn",  href: portfolioData.identity.linkedin, color: "#0A66C2" },
-  { icon: <Github    size={18}/>, label: "GitHub",    href: portfolioData.identity.github,   color: "#24292F" },
-  { icon: <Code2     size={18}/>, label: "LeetCode",  href: portfolioData.identity.leetcode, color: "#D97706" },
-  { icon: <Instagram size={18}/>, label: "Instagram", href: portfolioData.identity.instagram,color: "#C13584" },
+  { icon: <Linkedin size={18} />, label: "LinkedIn", href: portfolioData.identity.linkedin, color: "#0A66C2" },
+  { icon: <Github size={18} />, label: "GitHub", href: portfolioData.identity.github, color: "#24292F" },
+  { icon: <Code2 size={18} />, label: "LeetCode", href: portfolioData.identity.leetcode, color: "#D97706" },
+  { icon: <Instagram size={18} />, label: "Instagram", href: portfolioData.identity.instagram, color: "#C13584" },
 ];
 
 export function Contact() {
@@ -16,9 +15,9 @@ export function Contact() {
       id="contact"
       data-portfolio-section="Contact"
       style={{
-        position:  "relative",
-        zIndex:     1,
-        padding:   "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 48px) 60px",
+        position: "relative",
+        zIndex: 1,
+        padding: "clamp(60px, 8vw, 100px) clamp(20px, 5vw, 48px) 60px",
       }}
     >
       <div style={{ maxWidth: 800, margin: "0 auto" }}>
@@ -30,24 +29,24 @@ export function Contact() {
           style={{ textAlign: "center" }}
         >
           <p style={{
-            fontFamily:    "'Space Grotesk', sans-serif",
-            fontSize:       12, fontWeight: 600,
+            fontFamily: "'Space Grotesk', sans-serif",
+            fontSize: 12, fontWeight: 600,
             letterSpacing: "0.14em", textTransform: "uppercase",
-            color:         "#0E7490", marginBottom: 12,
+            color: "#0E7490", marginBottom: 12,
           }}>
             Contact
           </p>
 
           <h2 className="contact-title" style={{
-            fontFamily:    "'Syne', sans-serif",
-            fontSize:      "clamp(40px, 6vw, 72px)",
-            fontWeight:     800,
+            fontFamily: "'Syne', sans-serif",
+            fontSize: "clamp(40px, 6vw, 72px)",
+            fontWeight: 800,
             letterSpacing: "-0.04em",
-            lineHeight:     1.0,
-            marginBottom:   24,
-            background:    "linear-gradient(135deg, #0E7490, #6D28D9)",
+            lineHeight: 1.0,
+            marginBottom: 24,
+            background: "linear-gradient(135deg, #0E7490, #6D28D9)",
             WebkitBackgroundClip: "text",
-            WebkitTextFillColor:  "transparent",
+            WebkitTextFillColor: "transparent",
             backgroundClip: "text",
           }}>
             Let's build something.
@@ -56,16 +55,16 @@ export function Contact() {
           <a
             href={`mailto:${portfolioData.identity.email}`}
             style={{
-              fontFamily:    "'Space Grotesk', sans-serif",
-              fontSize:       "clamp(14px, 2vw, 20px)",
-              fontWeight:     500,
-              color:         "#3E4258",
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(14px, 2vw, 20px)",
+              fontWeight: 500,
+              color: "#3E4258",
               textDecoration: "none",
-              display:        "inline-flex",
-              alignItems:     "center",
-              gap:             8,
-              marginBottom:   40,
-              transition:     "color 0.2s",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              marginBottom: 40,
+              transition: "color 0.2s",
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = "#6D28D9")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#3E4258")}
@@ -82,34 +81,34 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  display:        "flex",
-                  alignItems:     "center",
-                  gap:             8,
-                  fontFamily:    "'Space Grotesk', sans-serif",
-                  fontSize:       14,
-                  fontWeight:     500,
-                  padding:       "10px 20px",
-                  borderRadius:   12,
-                  border:         `1px solid ${link.color}26`,
-                  background:     `linear-gradient(140deg, #FFFFFF 40%, ${link.color}0D 100%)`,
-                  boxShadow:      "0 1px 2px rgba(18,20,43,0.04)",
-                  color:         "#3E4258",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: 14,
+                  fontWeight: 500,
+                  padding: "10px 20px",
+                  borderRadius: 12,
+                  border: `1px solid ${link.color}26`,
+                  background: `linear-gradient(140deg, #FFFFFF 40%, ${link.color}0D 100%)`,
+                  boxShadow: "0 1px 2px rgba(18,20,43,0.04)",
+                  color: "#3E4258",
                   textDecoration: "none",
-                  transition:    "all 0.2s ease",
+                  transition: "all 0.2s ease",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
                   el.style.borderColor = `${link.color}55`;
-                  el.style.color       = link.color;
-                  el.style.boxShadow   = `0 6px 18px ${link.color}28`;
-                  el.style.transform   = "translateY(-2px)";
+                  el.style.color = link.color;
+                  el.style.boxShadow = `0 6px 18px ${link.color}28`;
+                  el.style.transform = "translateY(-2px)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLAnchorElement;
                   el.style.borderColor = `${link.color}26`;
-                  el.style.color       = "#3E4258";
-                  el.style.boxShadow   = "0 1px 2px rgba(18,20,43,0.04)";
-                  el.style.transform   = "translateY(0)";
+                  el.style.color = "#3E4258";
+                  el.style.boxShadow = "0 1px 2px rgba(18,20,43,0.04)";
+                  el.style.transform = "translateY(0)";
                 }}
               >
                 {link.icon} {link.label}
@@ -121,29 +120,29 @@ export function Contact() {
             href={cvFile}
             download="Prashant_Saini_CV.pdf"
             style={{
-              display:       "inline-flex",
-              alignItems:    "center",
-              gap:            8,
-              fontFamily:   "'Space Grotesk', sans-serif",
-              fontSize:       14,
-              fontWeight:     700,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: 14,
+              fontWeight: 700,
               letterSpacing: "0.06em",
               textTransform: "uppercase",
-              padding:       "13px 32px",
-              borderRadius:   12,
-              background:    "linear-gradient(135deg, #0E7490, #6D28D9)",
-              color:          "#fff",
+              padding: "13px 32px",
+              borderRadius: 12,
+              background: "linear-gradient(135deg, #0E7490, #6D28D9)",
+              color: "#fff",
               textDecoration: "none",
-              boxShadow:     "0 4px 18px rgba(109,40,217,0.22)",
-              transition:    "transform 0.18s ease, box-shadow 0.18s ease",
+              boxShadow: "0 4px 18px rgba(109,40,217,0.22)",
+              transition: "transform 0.18s ease, box-shadow 0.18s ease",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform  = "translateY(-2px)";
-              e.currentTarget.style.boxShadow  = "0 10px 30px rgba(109,40,217,0.30)";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 10px 30px rgba(109,40,217,0.30)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform  = "none";
-              e.currentTarget.style.boxShadow  = "0 4px 18px rgba(109,40,217,0.22)";
+              e.currentTarget.style.transform = "none";
+              e.currentTarget.style.boxShadow = "0 4px 18px rgba(109,40,217,0.22)";
             }}
           >
             <Download size={14} /> Download Resume
@@ -156,14 +155,14 @@ export function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           style={{
-            marginTop:     80,
-            paddingTop:    28,
-            borderTop:    "1px solid rgba(18,20,43,0.08)",
-            display:       "flex",
-            justifyContent:"space-between",
-            alignItems:    "center",
-            flexWrap:      "wrap",
-            gap:            12,
+            marginTop: 80,
+            paddingTop: 28,
+            borderTop: "1px solid rgba(18,20,43,0.08)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 12,
           }}
         >
           <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 12, color: "#676D8A" }}>
